@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ChefUP.ai — главное AI-рабочее пространство для HoReCa. Управляйте проектами, генерируйте ТТК, HACCP и финансовые модели." />
+  <meta property="og:title" content="ChefUP.ai · AI Workspace for HoReCa" />
+  <meta property="og:description" content="The ultimate AI workspace for hospitality professionals. Projects, documents, cost optimization — all in one platform." />
+  <meta property="og:type" content="website" />
+  <title>ChefUP.ai · AI Workspace for HoReCa Professionals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN SYSTEM — ChefUP.ai
+    ═══════════════════════════════════════════ */
+    :root {
+      --bg:        #000000;
+      --bg2:       #070707;
+      --bg3:       #0F0F0F;
+      --bg4:       #161616;
+      --bg5:       #1C1C1C;
+      --accent:    #F97316;
+      --accent2:   #FB923C;
+      --accent3:   #C2611F;
+      --silver:    #7A8A9E;
+      --text:      #F0F0F2;
+      --text2:     #C2C2D2;
+      --text3:     #828298;
+      --border:    rgba(249,115,22,0.18);
+      --border2:   rgba(255,255,255,0.08);
+      --card-bg:   rgba(10,10,10,0.98);
+      --shadow:    0 24px 72px rgba(0,0,0,0.75);
+      --nav-h:     72px;
+      --radius:    12px;
+      --radius-lg: 20px;
+    }
+
+    /* ═══════════════════════════════════════════
+       LIGHT THEME
+    ═══════════════════════════════════════════ */
+    [data-theme="light"] {
+      --bg:       #FFFFFF;
+      --bg2:      #F7F5F2;
+      --bg3:      #FFFFFF;
+      --bg4:      #EDE9E3;
+      --bg5:      #E0D9D0;
+      --accent:   #EA580C;
+      --accent2:  #C2410C;
+      --accent3:  #F97316;
+      --silver:   #6B7280;
+      --text:     #111827;
+      --text2:    #374151;
+      --text3:    #6B7280;
+      --border:   rgba(0,0,0,0.08);
+      --border2:  rgba(0,0,0,0.06);
+      --card-bg:  rgba(255,255,255,0.98);
+      --shadow:   0 24px 72px rgba(0,0,0,0.06);
+    }
+
+    [data-theme="light"] nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .nav-logo-main { color: #111827; }
+    [data-theme="light"] .nav-logo-sub  { color: var(--accent); }
+    [data-theme="light"] ::-webkit-scrollbar-track { background: #F1F0EE; }
+    [data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--accent3); }
+    [data-theme="light"] .hero::before {
+      background: radial-gradient(ellipse, rgba(234,88,12,0.06) 0%, transparent 70%);
+    }
+    [data-theme="light"] .cta-section::before {
+      background: radial-gradient(ellipse, rgba(234,88,12,0.07) 0%, transparent 70%);
+    }
+    [data-theme="light"] .hero-gradient-text {
+      background: linear-gradient(135deg, #111827 0%, #EA580C 45%, #F97316 55%, #111827 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    [data-theme="light"] .hero-label {
+      background: rgba(234,88,12,0.06);
+      border-color: rgba(234,88,12,0.18);
+    }
+    [data-theme="light"] .hero-label-dot { background: var(--accent); }
+    [data-theme="light"] .traction { background: #F7F5F2; }
+    [data-theme="light"] .traction-card { background: #FFFFFF; box-shadow: 0 2px 12px rgba(234,88,12,0.06); }
+    [data-theme="light"] .traction-card:hover { background: #FFF9F6; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    [data-theme="light"] .letter-body { background: #FFFFFF; box-shadow: 0 2px 32px rgba(0,0,0,0.05); }
+    [data-theme="light"] .quote-block { background: #F7F5F2; border-left-color: var(--accent); }
+    [data-theme="light"] .quote-block::before { color: var(--accent); }
+    [data-theme="light"] .bevi-card { background: #FFFFFF; box-shadow: 0 2px 12px rgba(234,88,12,0.05); }
+    [data-theme="light"] .bevi-card:hover { background: #FFF9F6; box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    [data-theme="light"] .bevi-card-icon.gold-bg   { background: rgba(234,88,12,0.10); }
+    [data-theme="light"] .bevi-card-icon.blue-bg   { background: rgba(234,88,12,0.10); }
+    [data-theme="light"] .bevi-card-icon.green-bg  { background: rgba(180,60,10,0.10); }
+    [data-theme="light"] .bevi-card-icon.silver-bg { background: rgba(90,106,126,0.10); }
+    [data-theme="light"] .lang-switcher { background: #FFFFFF; border-color: rgba(234,88,12,0.15); }
+    [data-theme="light"] .lang-btn.active { background: var(--accent); color: #fff; }
+    [data-theme="light"] .lang-btn:hover  { color: var(--accent); }
+    [data-theme="light"] .btn-outline { color: var(--text2); border-color: rgba(234,88,12,0.2); }
+    [data-theme="light"] .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    [data-theme="light"] footer { background: #F7F5F2; }
+    [data-theme="light"] .signoff { border-top-color: rgba(234,88,12,0.1); }
+    [data-theme="light"] .nav-badge { border-color: rgba(234,88,12,0.3); color: var(--accent); }
+    [data-theme="light"] .tab-btn.active { background: var(--accent); color: #fff; }
+    [data-theme="light"] .tab-btn:hover { color: var(--accent); }
+    [data-theme="light"] .tab-panel { background: #FFFFFF; box-shadow: 0 2px 24px rgba(234,88,12,0.06); }
+    [data-theme="light"] .role-feature-item { background: #F7F5F2; }
+    [data-theme="light"] .role-feature-item:hover { background: #FFF9F6; }
+    [data-theme="light"] .letter-stat { background: #F7F5F2; }
+    [data-theme="light"] .lps-panel { background: #F9F7F5; }
+    [data-theme="light"] .letter-info-box { background: #F7F5F2; border-color: rgba(0,0,0,0.08); }
+
+    /* ─── THEME TOGGLE BUTTON ─── */
+    .theme-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--bg4);
+      border: 1px solid var(--border2);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { border-color: var(--accent3); background: var(--bg3); }
+    .theme-btn .icon-dark  { display: none; }
+    .theme-btn .icon-light { display: block; }
+    [data-theme="light"] .theme-btn .icon-dark  { display: block; }
+    [data-theme="light"] .theme-btn .icon-light { display: none; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Urbanist', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--accent3); border-radius: 2px; }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4, .fw-bold { font-weight: 800; }
+    .fw-light  { font-weight: 300; }
+    .fw-medium { font-weight: 500; }
+    .fw-semi   { font-weight: 600; }
+    .accent  { color: var(--accent); }
+    .accent2 { color: var(--accent2); }
+    .silver  { color: var(--silver); }
+    .text2   { color: var(--text2); }
+    .text3   { color: var(--text3); }
+
+    /* ─── LAYOUT ─── */
+    .container      { max-width: 960px;  margin: 0 auto; padding: 0 24px; }
+    .container--wide{ max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(0,0,0,0.90);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border2);
+      z-index: 1000;
+      display: flex; align-items: center;
+      transition: border-bottom-color 0.3s;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px;
+    }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+    .nav-logo-main {
+      font-weight: 800; font-size: 18px; letter-spacing: 0.1em;
+      color: var(--text); transition: color 0.3s;
+    }
+    .nav-logo:hover .nav-logo-main { color: var(--accent); }
+    .nav-logo-sub { font-size: 8px; letter-spacing: 0.2em; color: var(--text3); text-transform: uppercase; }
+    .nav-logo-dot {
+      display: inline-block; width: 7px; height: 7px;
+      background: var(--accent); border-radius: 50%;
+      margin-right: 8px; vertical-align: middle;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-badge {
+      font-size: 10px; letter-spacing: 0.15em; color: var(--accent);
+      text-transform: uppercase; border: 1px solid var(--accent3);
+      padding: 4px 10px; border-radius: 20px; opacity: 0.85;
+    }
+    @media (max-width: 640px) { .nav-badge { display: none; } }
+
+    /* ─── LANG SWITCHER ─── */
+    .lang-switcher {
+      display: flex; background: var(--bg4);
+      border: 1px solid var(--border2); border-radius: 8px; overflow: hidden;
+    }
+    .lang-btn {
+      padding: 6px 12px; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text3); background: transparent; border: none;
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .lang-btn:hover { color: var(--text2); }
+    .lang-btn.active { background: var(--accent); color: #000; }
+
+    /* ═══════════════════════════════════════════
+       MULTILANG
+    ═══════════════════════════════════════════ */
+    [data-lang-ru], [data-lang-en], [data-lang-kz] { display: none !important; }
+    span[data-lang-ru], span[data-lang-en], span[data-lang-kz] { display: none !important; }
+    li[data-lang-ru],  li[data-lang-en],  li[data-lang-kz]     { display: none !important; }
+
+    [data-lang="ru"] [data-lang-ru] { display: block !important; }
+    [data-lang="en"] [data-lang-en] { display: block !important; }
+    [data-lang="kz"] [data-lang-kz] { display: block !important; }
+    [data-lang="ru"] span[data-lang-ru] { display: inline !important; }
+    [data-lang="en"] span[data-lang-en] { display: inline !important; }
+    [data-lang="kz"] span[data-lang-kz] { display: inline !important; }
+    [data-lang="ru"] li[data-lang-ru] { display: flex !important; }
+    [data-lang="en"] li[data-lang-en] { display: flex !important; }
+    [data-lang="kz"] li[data-lang-kz] { display: flex !important; }
+
+    /* ═══════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════ */
+    @keyframes pulse          { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(0.9)} }
+    @keyframes fadeSlideUp    { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes gradientFlow   { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes counterGlow    { 0%,100%{text-shadow:0 0 0 transparent} 50%{text-shadow:0 0 20px rgba(249,115,22,0.4)} }
+    @keyframes heroGlowShift  { 0%,100%{transform:translateX(-50%) scale(1);opacity:.08} 50%{transform:translateX(-50%) scale(1.15);opacity:.14} }
+    @keyframes nodeFloat      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes scanLine       { 0%{transform:translateY(-100%);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(100vh);opacity:0} }
+    @keyframes particleFloat  { 0%{transform:translateY(0) translateX(0) scale(1);opacity:.4} 33%{transform:translateY(-20px) translateX(8px) scale(1.1);opacity:.7} 66%{transform:translateY(-10px) translateX(-6px) scale(.9);opacity:.5} 100%{transform:translateY(0) translateX(0) scale(1);opacity:.4} }
+    @keyframes orbitPulse     { 0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,0)} 50%{box-shadow:0 0 0 8px rgba(249,115,22,0.08)} }
+    @keyframes shimmerSweep   { 0%{background-position:-200% center} 100%{background-position:200% center} }
+
+    .hero-gradient-text {
+      background: linear-gradient(135deg, #F0F0F2 0%, #F97316 40%, #FB923C 55%, #F0F0F2 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientFlow 7s ease-in-out infinite;
+    }
+
+    /* ─── FADE-UP ─── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.09) 0%, transparent 70%);
+      pointer-events: none;
+      animation: heroGlowShift 8s ease-in-out infinite;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .hero-scanline {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent);
+      animation: scanLine 7s linear infinite; pointer-events: none;
+    }
+    .hero-particles { position: absolute; inset: 0; pointer-events: none; }
+    .hero-particles span {
+      position: absolute; width: 3px; height: 3px;
+      border-radius: 50%; background: var(--accent);
+      animation: particleFloat var(--dur, 9s) var(--delay, 0s) ease-in-out infinite;
+    }
+    .hero .container { position: relative; z-index: 2; padding-top: 60px; padding-bottom: 80px; }
+
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(249,115,22,0.25);
+      background: rgba(249,115,22,0.06);
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 28px;
+    }
+    .hero-label-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s ease-in-out infinite; flex-shrink: 0;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: var(--text2); max-width: 600px;
+      line-height: 1.75; margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      background: var(--accent); color: #000;
+      font-size: 14px; font-weight: 800; letter-spacing: 0.04em;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s; font-family: inherit;
+      box-shadow: 0 8px 32px rgba(249,115,22,0.25);
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 12px 40px rgba(249,115,22,0.35); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      background: transparent; color: var(--text2);
+      font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+      text-decoration: none; border: 1px solid var(--border2);
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .btn-outline:hover { border-color: var(--accent3); color: var(--text); transform: translateY(-1px); }
+    .hero-meta {
+      display: flex; gap: 28px; flex-wrap: wrap;
+      padding-top: 32px; border-top: 1px solid var(--border2);
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--text3); font-weight: 600; letter-spacing: 0.04em;
+    }
+    .hero-meta-item svg { color: var(--accent); flex-shrink: 0; }
+
+    /* ─── SECTION DIVIDER ─── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      margin: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       TRACTION STRIP
+    ═══════════════════════════════════════════ */
+    .traction {
+      padding: 64px 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+    }
+    .traction-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--text3);
+      margin-bottom: 40px; text-align: center;
+    }
+    .traction-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .traction-card {
+      padding: 28px 24px; background: var(--bg3);
+      text-align: center; position: relative; transition: background 0.3s;
+      cursor: default;
+    }
+    .traction-card:hover { background: var(--bg4); }
+    .traction-card:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+    .traction-card:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+    .traction-number {
+      font-size: clamp(32px, 4vw, 48px); font-weight: 800;
+      color: var(--accent); line-height: 1; margin-bottom: 8px;
+      animation: counterGlow 3.5s ease-in-out infinite;
+    }
+    .traction-desc { font-size: 12px; color: var(--text2); line-height: 1.4; }
+    .traction-card-accent {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 2px; background: var(--accent); border-radius: 0 0 2px 2px;
+    }
+    @media (max-width: 640px) {
+      .traction-grid { grid-template-columns: repeat(2, 1fr); }
+      .traction-card:first-child { border-radius: var(--radius) 0 0 0; }
+      .traction-card:last-child  { border-radius: 0 0 var(--radius) 0; }
+      .traction-card:nth-child(2){ border-radius: 0 var(--radius) 0 0; }
+      .traction-card:nth-child(3){ border-radius: 0 0 0 var(--radius); }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTIONS
+    ═══════════════════════════════════════════ */
+    section { padding: 80px 0; }
+    .section-tag {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+      position: relative; padding-left: 16px;
+    }
+    .section-tag::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    }
+    .section-h2 {
+      font-size: clamp(24px, 3.5vw, 38px); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 20px; max-width: 720px;
+    }
+    .section-lead {
+      font-size: 16px; font-weight: 500; color: var(--text2);
+      max-width: 680px; margin-bottom: 48px; line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════
+       OVERVIEW / LETTER BLOCK
+    ═══════════════════════════════════════════ */
+    .letter-body {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius-lg); padding: 48px; margin-bottom: 40px;
+    }
+    .letter-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin: 28px 0; border-radius: var(--radius); overflow: hidden;
+    }
+    .letter-stat {
+      background: var(--bg4); padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .letter-stat-num {
+      font-size: 26px; font-weight: 800; color: var(--accent);
+      line-height: 1; animation: counterGlow 3s ease-in-out infinite;
+    }
+    .letter-stat-label { font-size: 11px; color: var(--text2); line-height: 1.4; }
+
+    /* ─── PROBLEM / SOLUTION SPLIT ─── */
+    .letter-problem-solution {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin: 28px 0; border-radius: var(--radius); overflow: hidden;
+    }
+    .lps-panel { padding: 24px; background: var(--bg4); }
+    .lps-label {
+      font-size: 9px; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .lps-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .lps-text { font-size: 13px; color: var(--text2); line-height: 1.65; }
+    .lps-text strong { color: var(--text); }
+
+    /* ─── QUOTE BLOCK ─── */
+    .quote-block {
+      background: var(--bg4); border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px; margin: 28px 0; position: relative;
+    }
+    .quote-block::before {
+      content: '"'; position: absolute; top: -8px; left: 16px;
+      font-size: 48px; color: var(--accent); line-height: 1; font-weight: 800; opacity: 0.4;
+    }
+    .quote-text { font-size: 14px; color: var(--text2); line-height: 1.75; font-style: italic; }
+
+    @media (max-width: 640px) {
+      .letter-body { padding: 28px 20px; }
+      .letter-stats { grid-template-columns: 1fr; }
+      .letter-problem-solution { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════
+       CAPABILITIES — BENTO GRID
+    ═══════════════════════════════════════════ */
+    .bevi-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-bottom: 16px;
+    }
+    .bevi-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .bevi-card {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .bevi-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(249,115,22,0.03) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+    }
+    .bevi-card:hover { border-color: var(--accent3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(249,115,22,0.08); }
+    .bevi-card:hover::after { opacity: 1; }
+    .bevi-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 18px;
+    }
+    .bevi-card-icon.gold-bg   { background: rgba(249,115,22,0.15); }
+    .bevi-card-icon.blue-bg   { background: rgba(249,115,22,0.12); }
+    .bevi-card-icon.green-bg  { background: rgba(200,90,30,0.15); }
+    .bevi-card-icon.silver-bg { background: rgba(122,138,158,0.12); }
+    .bevi-card-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .bevi-card-sub {
+      font-size: 10px; color: var(--text3); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 10px; font-weight: 700;
+    }
+    .bevi-card-desc { font-size: 13px; color: var(--text2); line-height: 1.65; }
+    .bevi-badge {
+      display: inline-block; background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.25); color: var(--accent);
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-top: 12px;
+    }
+    .doc-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .doc-chip {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+      border: 1px solid var(--border2); color: var(--text3);
+      padding: 3px 10px; border-radius: 6px; background: var(--bg4);
+    }
+    @media (max-width: 640px) {
+      .bevi-grid     { grid-template-columns: 1fr; }
+      .bevi-grid-3   { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 641px) and (max-width: 900px) {
+      .bevi-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ═══════════════════════════════════════════
+       USE CASES — TABBED
+    ═══════════════════════════════════════════ */
+    .tabs-nav {
+      display: flex; gap: 4px; margin-bottom: 24px;
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius); padding: 4px; width: fit-content;
+    }
+    .tab-btn {
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+      color: var(--text3); background: transparent; border: none;
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .tab-btn:hover { color: var(--text); background: var(--bg4); }
+    .tab-btn.active { background: var(--accent); color: #000; }
+    .tab-btn .tab-emoji { font-size: 16px; }
+
+    .tab-panel {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: var(--radius-lg); padding: 40px;
+      display: none;
+    }
+    .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .tab-panel-left h3 {
+      font-size: clamp(22px, 2.5vw, 30px); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 10px;
+    }
+    .tab-panel-left p { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 24px; }
+    .role-features { display: flex; flex-direction: column; gap: 8px; }
+    .role-feature-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 14px; border-radius: 10px; background: var(--bg4);
+      transition: background 0.2s;
+    }
+    .role-feature-item:hover { background: var(--bg5); }
+    .role-feature-dot {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .role-feature-dot svg { color: var(--accent); }
+    .role-feature-text { font-size: 13px; color: var(--text2); line-height: 1.55; }
+    .role-feature-text strong { color: var(--text); font-weight: 700; }
+    @media (max-width: 768px) {
+      .tab-panel.active { grid-template-columns: 1fr; }
+      .tabs-nav { width: 100%; }
+      .tab-btn { flex: 1; justify-content: center; }
+      .tab-panel { padding: 24px 20px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       WORKFLOW DIAGRAM
+    ═══════════════════════════════════════════ */
+    .workflow-section {
+      padding: 80px 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+      position: relative; overflow: hidden;
+    }
+    .workflow-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none;
+    }
+    .workflow-steps {
+      display: flex; align-items: flex-start; gap: 0; margin-top: 48px;
+      position: relative;
+    }
+    .workflow-steps::before {
+      content: ''; position: absolute;
+      top: 28px; left: 28px; right: 28px; height: 1px;
+      background: linear-gradient(90deg, var(--accent3), rgba(249,115,22,0.3), var(--accent3));
+    }
+    .workflow-step {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      text-align: center; position: relative; padding: 0 12px;
+    }
+    .workflow-step-num {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--bg4); border: 1px solid var(--accent3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 16px; position: relative; z-index: 1;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .workflow-step:hover .workflow-step-num {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(249,115,22,0.2);
+    }
+    .workflow-step-title { font-size: 13px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .workflow-step-desc  { font-size: 11px; color: var(--text3); line-height: 1.5; }
+    @media (max-width: 640px) {
+      .workflow-steps { flex-direction: column; gap: 24px; }
+      .workflow-steps::before { display: none; }
+      .workflow-step { flex-direction: row; text-align: left; gap: 16px; }
+      .workflow-step-num { flex-shrink: 0; }
+    }
+
+    /* ═══════════════════════════════════════════
+       CTA SECTION
+    ═══════════════════════════════════════════ */
+    .cta-section {
+      padding: 100px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .container { position: relative; z-index: 1; }
+    .cta-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(249,115,22,0.25); background: rgba(249,115,22,0.06);
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 28px;
+    }
+    .cta-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+    .cta-h2 {
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    .cta-sub {
+      font-size: 16px; color: var(--text2); max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.75;
+    }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border2);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .footer-brand-name span { color: var(--accent); }
+    .footer-brand-desc { font-size: 12px; color: var(--text3); line-height: 1.65; max-width: 220px; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 8px; }
+    .footer-social-btn {
+      width: 32px; height: 32px; border-radius: 8px;
+      border: 1px solid var(--border2); background: var(--bg4);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text3); text-decoration: none;
+      transition: all 0.2s; font-size: 13px; font-weight: 700;
+    }
+    .footer-social-btn:hover { border-color: var(--accent3); color: var(--accent); background: var(--bg3); }
+    .footer-col-title {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text3); margin-bottom: 16px;
+    }
+    .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links-list a {
+      font-size: 13px; color: var(--text3); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links-list a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border2); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 11px; color: var(--text3); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 11px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--text2); }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       ECOSYSTEM BENTO GRID
+    ═══════════════════════════════════════════════════ */
+    .eco-section { background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
+    .eco-bento { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto; gap: 12px; margin-top: 56px; }
+    .eco-card { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius-lg); padding: 28px; position: relative; overflow: hidden; transition: all 0.4s; display: flex; flex-direction: column; }
+    .eco-card::before { content:''; position: absolute; top:-60%; right:-40%; width: 260px; height: 260px; background: radial-gradient(circle, var(--card-glow, rgba(249,115,22,0.07)), transparent 70%); pointer-events: none; opacity: 0.4; transition: opacity 0.35s; }
+    .eco-card:hover { border-color: var(--border); transform: translateY(-3px); }
+    .eco-card:hover::before { opacity: 1; }
+    .eco-card-jobs   { grid-column: 1; grid-row: 1/3; --card-glow: rgba(249,115,22,0.09); }
+    .eco-card-market { grid-column: 2; grid-row: 1; --card-glow: rgba(96,165,250,0.09); }
+    .eco-card-edu    { grid-column: 3; grid-row: 1; --card-glow: rgba(167,139,250,0.09); }
+    .eco-card-ai     { grid-column: 2/4; grid-row: 2; --card-glow: rgba(52,211,153,0.08); }
+    .eco-icon { width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; border: 1px solid; margin-bottom: 14px; transition: transform 0.35s; }
+    .eco-card:hover .eco-icon { transform: scale(1.1) rotate(-4deg); }
+    .eco-icon-brand  { background: rgba(249,115,22,0.08); border-color: rgba(249,115,22,0.22); }
+    .eco-icon-blue   { background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.22); }
+    .eco-icon-purple { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.22); }
+    .eco-icon-green  { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.22); }
+    .eco-badge { display: inline-block; margin-bottom: 11px; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid; border-radius: 99px; padding: 3px 10px; font-weight: 800; }
+    .eco-badge-brand  { color: var(--accent);  border-color: rgba(249,115,22,0.25); background: rgba(249,115,22,0.07); }
+    .eco-badge-blue   { color: #60A5FA; border-color: rgba(96,165,250,0.25); background: rgba(96,165,250,0.07); }
+    .eco-badge-purple { color: #A78BFA; border-color: rgba(167,139,250,0.25); background: rgba(167,139,250,0.07); }
+    .eco-badge-green  { color: #34D399; border-color: rgba(52,211,153,0.25); background: rgba(52,211,153,0.07); }
+    .eco-card-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 9px; line-height: 1.3; }
+    .eco-card-desc  { font-size: 13px; color: var(--text3); line-height: 1.7; }
+    .eco-stats { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border2); display: flex; gap: 24px; flex-wrap: wrap; }
+    .eco-stat { display: flex; flex-direction: column; gap: 2px; }
+    .eco-stat-key { font-size: 10px; color: var(--text3); }
+    .eco-stat-val { font-size: 13px; font-weight: 800; color: var(--accent); }
+    .eco-ai-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .eco-ai-link { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--border); border-radius: 99px; padding: 8px 18px; background: rgba(249,115,22,0.06); transition: all 0.3s; white-space: nowrap; text-decoration: none; }
+    .eco-ai-link:hover { background: rgba(249,115,22,0.12); transform: translateY(-1px); }
+    @media (max-width:900px) { .eco-bento { display: flex; flex-direction: column; } }
+
+    /* ═══════════════════════════════════════════════════
+       WHY CHEFUP
+    ═══════════════════════════════════════════════════ */
+    .why-section { padding: 100px 0; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 52px; }
+    .why-card { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius); padding: 24px; transition: all 0.35s; }
+    .why-card:hover { border-color: var(--border); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+    .why-card-icon { font-size: 22px; margin-bottom: 11px; }
+    .why-card-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.35; }
+    .why-card-desc  { font-size: 13px; color: var(--text3); line-height: 1.65; }
+    .why-vs { display: grid; grid-template-columns: 1fr auto 1fr; margin-top: 40px; border: 1px solid var(--border2); border-radius: var(--radius-lg); overflow: hidden; }
+    .why-vs-col { padding: 28px 24px; }
+    .why-vs-col:last-child { background: rgba(249,115,22,0.03); }
+    .why-vs-divider { width: 1px; background: var(--border2); }
+    .why-vs-col-title { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 18px; }
+    .why-vs-col-title.legacy { color: var(--text3); }
+    .why-vs-col-title.chefup { color: var(--accent); }
+    .why-vs-row { display: flex; flex-direction: column; gap: 11px; }
+    .why-vs-item { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; line-height: 1.5; }
+    .why-vs-item.negative { color: var(--text3); }
+    .why-vs-item.positive { color: var(--text2); }
+    .why-vs-icon { flex-shrink: 0; font-size: 11px; font-weight: 800; width: 16px; margin-top: 2px; }
+    .why-vs-item.negative .why-vs-icon { color: var(--text3); }
+    .why-vs-item.positive .why-vs-icon { color: var(--accent); }
+    @media (max-width:768px) { .why-grid { grid-template-columns: 1fr 1fr; } .why-vs { grid-template-columns: 1fr; } .why-vs-divider { width: auto; height: 1px; } }
+    @media (max-width:480px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════════════════════
+       ROADMAP
+    ═══════════════════════════════════════════════════ */
+    .rm-section { background: var(--bg2); border-top: 1px solid var(--border2); padding: 100px 0; }
+    .rm-wrap { position: relative; margin-top: 52px; }
+    .rm-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--border2); transform: translateX(-50%); pointer-events: none; }
+    .rm-items { display: flex; flex-direction: column; gap: 36px; position: relative; }
+    .rm-item { display: grid; grid-template-columns: 1fr 84px 1fr; align-items: start; }
+    .rm-item:nth-child(odd)  .rm-content  { order: 1; text-align: right; }
+    .rm-item:nth-child(odd)  .rm-dot-col  { order: 2; }
+    .rm-item:nth-child(odd)  .rm-spacer   { order: 3; }
+    .rm-item:nth-child(even) .rm-spacer   { order: 1; }
+    .rm-item:nth-child(even) .rm-dot-col  { order: 2; }
+    .rm-item:nth-child(even) .rm-content  { order: 3; text-align: left; }
+    .rm-dot-col { display: flex; flex-direction: column; align-items: center; gap: 6px; padding-top: 2px; }
+    .rm-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid var(--border2); background: var(--bg4); z-index: 1; position: relative; }
+    .rm-dot.done   { background: rgba(52,211,153,0.12);  border-color: rgba(52,211,153,0.40); }
+    .rm-dot.active { background: rgba(249,115,22,0.12);  border-color: rgba(249,115,22,0.45); }
+    .rm-status { font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 99px; padding: 3px 9px; white-space: nowrap; }
+    .rm-status.done   { background: rgba(52,211,153,0.09); color: #34D399; border: 1px solid rgba(52,211,153,0.22); }
+    .rm-status.active { background: rgba(249,115,22,0.09); color: var(--accent); border: 1px solid rgba(249,115,22,0.28); }
+    .rm-status.future { background: var(--bg4); color: var(--text3); border: 1px solid var(--border2); }
+    .rm-phase { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; font-weight: 700; }
+    .rm-title { font-size: clamp(15px,1.6vw,18px); font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.3; }
+    .rm-desc  { font-size: 13px; color: var(--text3); line-height: 1.6; }
+    .rm-tags  { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .rm-item:nth-child(odd)  .rm-tags { justify-content: flex-end; }
+    .rm-item:nth-child(even) .rm-tags { justify-content: flex-start; }
+    .rm-tag { font-size: 10px; padding: 2px 9px; border-radius: 20px; background: var(--bg4); border: 1px solid var(--border2); color: var(--text3); }
+    @media (max-width:700px) {
+      .rm-line { display:none; }
+      /* Switch to flex so order overrides work reliably */
+      .rm-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .rm-spacer { display:none; }
+      /* Dot always on the left */
+      .rm-item:nth-child(odd)  .rm-dot-col,
+      .rm-item:nth-child(even) .rm-dot-col {
+        order: 1;
+        flex-shrink: 0;
+        width: 44px;
+        align-items: center;
+      }
+      /* Content always on the right, left-aligned */
+      .rm-item:nth-child(odd)  .rm-content,
+      .rm-item:nth-child(even) .rm-content {
+        order: 2;
+        flex: 1;
+        text-align: left;
+      }
+      .rm-tags { justify-content: flex-start !important; }
+      .rm-item:nth-child(odd) .rm-tags,
+      .rm-item:nth-child(even) .rm-tags { justify-content: flex-start; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       MARKET METRICS
+    ═══════════════════════════════════════════════════ */
+    .metrics-section { background: var(--bg3); border-top: 1px solid var(--border2); padding: 100px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border2); border: 1px solid var(--border2); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+    .stat-card { background: var(--bg3); padding: clamp(22px,3vh,38px) clamp(18px,2.5vw,30px); text-align: center; transition: all 0.35s; position: relative; overflow: hidden; }
+    .stat-card::before { content:''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--sg, rgba(249,115,22,0.05)), transparent); opacity: 0; transition: opacity 0.35s; }
+    .stat-card:hover { background: var(--bg4); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-icon { font-size: 22px; margin-bottom: 10px; }
+    .stat-value { font-size: clamp(24px,3.2vw,38px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 5px; line-height: 1; }
+    .sv-brand  { color: var(--accent); }
+    .sv-green  { color: #34D399; }
+    .sv-blue   { color: #60A5FA; }
+    .sv-purple { color: #A78BFA; }
+    .sv-cyan   { color: #06b6d4; }
+    .stat-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); margin-bottom: 7px; }
+    .stat-sub { font-size: 12px; color: var(--text3); line-height: 1.5; max-width: 160px; margin: 0 auto; }
+    .investor-strip { margin-top: 24px; padding: 22px 26px; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .investor-strip-label { font-size: 10px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 4px; }
+    .investor-strip-desc { font-size: 13px; color: var(--text2); }
+    @media (max-width:800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width:480px) { .stats-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAVIGATION ═══════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-main">
+        <span class="nav-logo-dot"></span>ChefUP<span style="color:var(--accent)">.ai</span>
+      </div>
+      <div class="nav-logo-sub">AI Workspace for HoReCa</div>
+    </a>
+    <div class="nav-right">
+      <span class="nav-badge">
+        <span data-lang-ru>Ранний доступ</span>
+        <span data-lang-en>Early Access</span>
+        <span data-lang-kz>Ерте қол жетім</span>
+      </span>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang-target="ru">RU</button>
+        <button class="lang-btn" data-lang-target="en">EN</button>
+        <button class="lang-btn" data-lang-target="kz">KZ</button>
+      </div>
+      <button class="theme-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <span class="icon-light">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+        <span class="icon-dark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+      </button>
+      <a href="#cta" class="btn-primary" style="padding:10px 18px;font-size:12px;">
+        <span data-lang-ru>Начать</span>
+        <span data-lang-en>Get Started</span>
+        <span data-lang-kz>Бастау</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-scanline"></div>
+  <div class="hero-particles" aria-hidden="true">
+    <span style="--dur:9s;  --delay:0s;   top:15%; left:8%;"></span>
+    <span style="--dur:12s; --delay:2s;   top:30%; left:78%;"></span>
+    <span style="--dur:7s;  --delay:1.5s; top:65%; left:22%;"></span>
+    <span style="--dur:11s; --delay:3s;   top:50%; left:88%;"></span>
+    <span style="--dur:8s;  --delay:0.5s; top:80%; left:55%;"></span>
+    <span style="--dur:14s; --delay:4s;   top:20%; left:45%;"></span>
+    <span style="--dur:10s; --delay:2.5s; top:70%; left:12%;"></span>
+  </div>
+  <div class="container">
+    <div class="fade-up">
+      <div class="hero-label">
+        <span class="hero-label-dot"></span>
+        <span data-lang-ru>AI Workspace · HoReCa · Enterprise · 14 стран</span>
+        <span data-lang-en>AI Workspace · HoReCa · Enterprise · 14 Countries</span>
+        <span data-lang-kz>AI Workspace · HoReCa · Enterprise · 14 ел</span>
+      </div>
+    </div>
+
+    <h1 class="fade-up d1">
+      <span class="hero-gradient-text">
+        <span data-lang-ru>Главное AI-рабочее<br>пространство для<br>профессионалов HoReCa</span>
+        <span data-lang-en>The Ultimate AI Workspace<br>for HoReCa<br>Professionals</span>
+        <span data-lang-kz>HoReCa мамандары үшін<br>негізгі AI жұмыс<br>кеңістігі</span>
+      </span>
+    </h1>
+
+    <p class="hero-sub fade-up d2">
+      <span data-lang-ru>От концепции до кухни. Единая интеллектуальная платформа для управления проектами, генерации технических документов и оптимизации затрат — для каждой роли в индустрии гостеприимства.</span>
+      <span data-lang-en>From concept to kitchen. One intelligent platform to manage projects, generate technical documents, and optimize costs for any role in the hospitality industry.</span>
+      <span data-lang-kz>Тұжырымдамадан асханаға дейін. Жобаларды басқаруға, техникалық құжаттар жасауға және шығындарды оңтайландыруға арналған бірыңғай ақылды платформа.</span>
+    </p>
+
+    <div class="hero-actions fade-up d3">
+      <a href="#cta" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+        <span data-lang-ru>Создать Workspace</span>
+        <span data-lang-en>Start Your Workspace</span>
+        <span data-lang-kz>Workspace жасау</span>
+      </a>
+      <a href="#capabilities" class="btn-outline">
+        <span data-lang-ru>Узнать больше</span>
+        <span data-lang-en>Learn More</span>
+        <span data-lang-kz>Толығырақ</span>
+      </a>
+    </div>
+
+    <div class="hero-meta fade-up d4">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span data-lang-ru>2 400+ активных пользователей</span>
+        <span data-lang-en>2,400+ active users</span>
+        <span data-lang-kz>2 400+ белсенді пайдаланушы</span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        <span>14 <span data-lang-ru>стран</span><span data-lang-en>countries</span><span data-lang-kz>ел</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>4.9★ <span data-lang-ru>средняя оценка</span><span data-lang-en>avg. rating</span><span data-lang-kz>орт. рейтинг</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INTEGRATION / BENEVSKY IT HUB ═══════ -->
+<section id="integration" style="padding: 80px 0; background: var(--bg2);">
+  <div class="container" style="max-width: 960px;">
+    <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.08);border:1px solid var(--border);border-radius:99px;padding:6px 14px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);">
+          <span data-lang-ru>Интеграция</span>
+          <span data-lang-en>Integration</span>
+          <span data-lang-kz>Интеграция</span>
+        </span>
+      </div>
+    </div>
+
+    <h2 class="section-h2 fade-up d1" style="margin-bottom:16px;">
+      <span data-lang-ru>Интегрируем ChefUP AI<br>в вашу компанию</span>
+      <span data-lang-en>We integrate ChefUP AI<br>into your company</span>
+      <span data-lang-kz>ChefUP AI-ды компанияңызға<br>интеграциялаймыз</span>
+    </h2>
+
+    <p class="section-lead fade-up d2" style="margin-bottom:48px;">
+      <span data-lang-ru>Внедрение под ключ силами команды <strong style="color:var(--accent);">Benevsky IT Hub</strong> — от аудита процессов до запуска и обучения персонала.</span>
+      <span data-lang-en>Turnkey deployment by the <strong style="color:var(--accent);">Benevsky IT Hub</strong> team — from process audit to launch and staff training.</span>
+      <span data-lang-kz><strong style="color:var(--accent);">Benevsky IT Hub</strong> командасының кілт тапсыру негізіндегі енгізу — процестерді аудиттеуден іске қосу мен персоналды оқытуға дейін.</span>
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;" class="fade-up d3">
+      <!-- Step 1 -->
+      <div class="bevi-card" style="padding:28px 24px;">
+        <div style="font-size:22px;margin-bottom:12px;">🔍</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">01</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">
+          <span data-lang-ru>Аудит процессов</span>
+          <span data-lang-en>Process Audit</span>
+          <span data-lang-kz>Процестерді аудит</span>
+        </div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.5;">
+          <span data-lang-ru>Анализируем текущие рабочие потоки и выявляем точки роста эффективности.</span>
+          <span data-lang-en>We analyse existing workflows and identify efficiency growth opportunities.</span>
+          <span data-lang-kz>Ағымдағы жұмыс ағындарын талдап, өнімділік өсу нүктелерін анықтаймыз.</span>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="bevi-card" style="padding:28px 24px;">
+        <div style="font-size:22px;margin-bottom:12px;">⚙️</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">02</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">
+          <span data-lang-ru>Настройка под бизнес</span>
+          <span data-lang-en>Business Customisation</span>
+          <span data-lang-kz>Бизнеске бейімдеу</span>
+        </div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.5;">
+          <span data-lang-ru>Создаём шаблоны, справочники и AI-контекст специально под вашу концепцию и меню.</span>
+          <span data-lang-en>We build templates, directories and AI context tailored to your concept and menu.</span>
+          <span data-lang-kz>Сіздің тұжырымдамаңыз бен мәзіріңізге арналған үлгілер, анықтамалар және AI-контекст жасаймыз.</span>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="bevi-card" style="padding:28px 24px;">
+        <div style="font-size:22px;margin-bottom:12px;">🚀</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">03</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">
+          <span data-lang-ru>Запуск и обучение</span>
+          <span data-lang-en>Launch & Training</span>
+          <span data-lang-kz>Іске қосу және оқыту</span>
+        </div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.5;">
+          <span data-lang-ru>Запускаем платформу, обучаем команду и остаёмся на поддержке первые 30 дней.</span>
+          <span data-lang-en>We launch the platform, train your team and provide support for the first 30 days.</span>
+          <span data-lang-kz>Платформаны іске қосып, командаңызды оқытып, алғашқы 30 күн қолдаудамыз.</span>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="bevi-card" style="padding:28px 24px;">
+        <div style="font-size:22px;margin-bottom:12px;">📈</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">04</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">
+          <span data-lang-ru>Рост и масштаб</span>
+          <span data-lang-en>Growth & Scaling</span>
+          <span data-lang-kz>Өсу және масштабтау</span>
+        </div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.5;">
+          <span data-lang-ru>Помогаем масштабировать платформу по мере роста сети ресторанов.</span>
+          <span data-lang-en>We help scale the platform as your restaurant group grows.</span>
+          <span data-lang-kz>Мейрамхана желісі өскен сайын платформаны масштабтауға көмектесеміз.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benevsky IT Hub badge -->
+    <div class="fade-up d4" style="margin-top:44px;padding:24px 28px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div style="font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.01em;margin-bottom:4px;">Benevsky IT Hub</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.5;">
+          <span data-lang-ru>IT-студия полного цикла — от идеи до запуска продукта. Специализируемся на HoReCa-автоматизации и AI-решениях для hospitality-бизнеса.</span>
+          <span data-lang-en>Full-cycle IT studio — from idea to product launch. Specialising in HoReCa automation and AI solutions for the hospitality industry.</span>
+          <span data-lang-kz>Толық циклді IT-студия — идеядан өнімді іске қосуға дейін. HoReCa автоматизациясы мен hospitality-бизнеске арналған AI-шешімдерге маманданған.</span>
+        </div>
+      </div>
+      <a href="mailto:hello@benevsky.dev" style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <span data-lang-ru>Обсудить интеграцию</span>
+        <span data-lang-en>Discuss integration</span>
+        <span data-lang-kz>Интеграцияны талқылау</span>
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ TRACTION ═══════ -->
+<div class="traction">
+  <div class="container">
+    <div class="traction-label fade-up">
+      <span data-lang-ru>Что даёт ChefUP.ai вашему бизнесу</span>
+      <span data-lang-en>What ChefUP.ai delivers to your business</span>
+      <span data-lang-kz>ChefUP.ai бизнесіңізге не береді</span>
+    </div>
+    <div class="traction-grid">
+      <div class="traction-card fade-up d1">
+        <div class="traction-card-accent"></div>
+        <div class="traction-number">3×</div>
+        <div class="traction-desc">
+          <span data-lang-ru>Быстрее подготовка<br>документов</span>
+          <span data-lang-en>Faster document<br>preparation</span>
+          <span data-lang-kz>Құжаттарды жылдам<br>дайындау</span>
+        </div>
+      </div>
+      <div class="traction-card fade-up d2">
+        <div class="traction-card-accent"></div>
+        <div class="traction-number">−40%</div>
+        <div class="traction-desc">
+          <span data-lang-ru>Снижение<br>food cost</span>
+          <span data-lang-en>Reduction in<br>food cost</span>
+          <span data-lang-kz>Тағам<br>шығынын азайту</span>
+        </div>
+      </div>
+      <div class="traction-card fade-up d3">
+        <div class="traction-card-accent"></div>
+        <div class="traction-number">70%</div>
+        <div class="traction-desc">
+          <span data-lang-ru>Меньше<br>рутинных задач</span>
+          <span data-lang-en>Less routine<br>manual work</span>
+          <span data-lang-kz>Рутиналық<br>жұмысты азайту</span>
+        </div>
+      </div>
+      <div class="traction-card fade-up d4">
+        <div class="traction-card-accent"></div>
+        <div class="traction-number">98%</div>
+        <div class="traction-desc">
+          <span data-lang-ru>Retention<br>через 30 дней</span>
+          <span data-lang-en>Retention<br>after 30 days</span>
+          <span data-lang-kz>30 күннен кейінгі<br>Retention</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ OVERVIEW ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>О платформе</span>
+      <span data-lang-en>About the Platform</span>
+      <span data-lang-kz>Платформа туралы</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Индустрия гостеприимства<br>нуждается в умных инструментах</span>
+      <span data-lang-en>The Hospitality Industry<br>Needs Intelligent Tools</span>
+      <span data-lang-kz>Қонақжайлылық индустриясы<br>ақылды құралдарды қажет етеді</span>
+    </h2>
+
+    <div class="letter-body fade-up d2">
+
+      <div class="letter-stats">
+        <div class="letter-stat">
+          <div class="letter-stat-num">70%</div>
+          <div class="letter-stat-label">
+            <span data-lang-ru>рабочего времени — рутинные задачи</span>
+            <span data-lang-en>of work time on routine tasks</span>
+            <span data-lang-kz>жұмыс уақыты — рутиналық тапсырмалар</span>
+          </div>
+        </div>
+        <div class="letter-stat">
+          <div class="letter-stat-num">3x</div>
+          <div class="letter-stat-label">
+            <span data-lang-ru>быстрее с ChefUP.ai</span>
+            <span data-lang-en>faster with ChefUP.ai</span>
+            <span data-lang-kz>ChefUP.ai-мен жылдамырақ</span>
+          </div>
+        </div>
+        <div class="letter-stat">
+          <div class="letter-stat-num">40%</div>
+          <div class="letter-stat-label">
+            <span data-lang-ru>снижение food cost через AI-анализ</span>
+            <span data-lang-en>food cost reduction via AI-analysis</span>
+            <span data-lang-kz>AI-талдау арқылы food cost азаюы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="letter-problem-solution">
+        <div class="lps-panel">
+          <div class="lps-label" style="color:var(--silver);">
+            <span class="lps-dot" style="background:var(--silver);"></span>
+            <span data-lang-ru>Проблема</span>
+            <span data-lang-en>The Problem</span>
+            <span data-lang-kz>Мәселе</span>
+          </div>
+          <div class="lps-text">
+            <span data-lang-ru>Повара, менеджеры и владельцы ресторанов тратят часы на <strong>рутинные задачи</strong>: расчёт food cost, составление ТТК, графики смен, финансовые отчёты. Никакой структуры, данные разбросаны, инструменты устарели.</span>
+            <span data-lang-en>Chefs, managers and restaurant owners spend hours on <strong>routine tasks</strong>: calculating food cost, writing TTK cards, scheduling shifts, financial reports. No structure, scattered data, outdated tools.</span>
+            <span data-lang-kz>Аспаздар, менеджерлер мен мейрамхана иелері сағаттарын <strong>рутиналық тапсырмаларға</strong> жұмсайды: food cost есептеу, ТТК жасау, ауысым кестелері, қаржылық есептер. Ешқандай құрылым жоқ, деректер шашыраңқы.</span>
+          </div>
+        </div>
+        <div class="lps-panel" style="border-left: 2px solid var(--accent);">
+          <div class="lps-label" style="color:var(--accent);">
+            <span class="lps-dot" style="background:var(--accent);"></span>
+            <span data-lang-ru>Решение ChefUP.ai</span>
+            <span data-lang-en>ChefUP.ai Solution</span>
+            <span data-lang-kz>ChefUP.ai шешімі</span>
+          </div>
+          <div class="lps-text">
+            <span data-lang-ru>Единое AI-рабочее пространство с <strong>проектами, контекстными чатами и мгновенной генерацией документов</strong>. Структурированная среда, а не просто чат-бот. Все данные в одном месте, каждый — в своей роли.</span>
+            <span data-lang-en>A unified AI workspace with <strong>projects, contextual chats and instant document generation</strong>. A structured environment — not just a chatbot. All data in one place, everyone in their role.</span>
+            <span data-lang-kz>Жобалары, контекстік чаттары және <strong>лезде құжат генерациясы</strong> бар бірыңғай AI жұмыс кеңістігі. Тек чат-бот емес, құрылымдық орта. Барлық деректер бір жерде, әркім өз рөлінде.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block" style="margin-bottom:0">
+        <p class="quote-text">
+          <span data-lang-ru>ChefUP.ai превращает операционный хаос ресторана в <strong style="color:var(--accent)">структурированное, измеримое и управляемое рабочее пространство</strong> — с AI-ассистентом, который понимает специфику HoReCa изнутри.</span>
+          <span data-lang-en>ChefUP.ai transforms the operational chaos of a restaurant into a <strong style="color:var(--accent)">structured, measurable and manageable workspace</strong> — with an AI assistant that understands HoReCa from the inside.</span>
+          <span data-lang-kz>ChefUP.ai мейрамхананың операциялық хаосын <strong style="color:var(--accent)">құрылымдық, өлшенетін және басқарылатын жұмыс кеңістігіне</strong> айналдырады — HoReCa-ны іштей түсінетін AI-ассистентпен.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ WORKFLOW ═══════ -->
+<div class="workflow-section">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Как это работает</span>
+      <span data-lang-en>How It Works</span>
+      <span data-lang-kz>Бұл қалай жұмыс істейді</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>От задачи до результата<br>за несколько секунд</span>
+      <span data-lang-en>From Task to Result<br>in Seconds</span>
+      <span data-lang-kz>Тапсырмадан нәтижеге<br>бірнеше секунда ішінде</span>
+    </h2>
+    <div class="workflow-steps fade-up d2">
+      <div class="workflow-step">
+        <div class="workflow-step-num">🗂️</div>
+        <div class="workflow-step-title">
+          <span data-lang-ru>Проект</span>
+          <span data-lang-en>Project</span>
+          <span data-lang-kz>Жоба</span>
+        </div>
+        <div class="workflow-step-desc">
+          <span data-lang-ru>Создайте workspace под задачу: меню, HR или финансы</span>
+          <span data-lang-en>Create a workspace for your task: menu, HR or finance</span>
+          <span data-lang-kz>Тапсырма үшін workspace жасаңыз: мәзір, HR немесе қаржы</span>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">💬</div>
+        <div class="workflow-step-title">
+          <span data-lang-ru>Контекст</span>
+          <span data-lang-en>Context</span>
+          <span data-lang-kz>Контекст</span>
+        </div>
+        <div class="workflow-step-desc">
+          <span data-lang-ru>AI сохраняет контекст проекта и отвечает точно в теме</span>
+          <span data-lang-en>AI preserves project context and responds precisely on topic</span>
+          <span data-lang-kz>AI жоба контекстін сақтайды және дәл тақырыпта жауап береді</span>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">📄</div>
+        <div class="workflow-step-title">
+          <span data-lang-ru>Документ</span>
+          <span data-lang-en>Document</span>
+          <span data-lang-kz>Құжат</span>
+        </div>
+        <div class="workflow-step-desc">
+          <span data-lang-ru>Генерируйте ТТК, HACCP, Excel прямо внутри чата</span>
+          <span data-lang-en>Generate TTK, HACCP, Excel directly inside the chat</span>
+          <span data-lang-kz>ТТК, HACCP, Excel-ді чаттың ішінде жасаңыз</span>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">📤</div>
+        <div class="workflow-step-title">
+          <span data-lang-ru>Экспорт</span>
+          <span data-lang-en>Export</span>
+          <span data-lang-kz>Экспорт</span>
+        </div>
+        <div class="workflow-step-desc">
+          <span data-lang-ru>Скачайте готовые файлы или поделитесь с командой</span>
+          <span data-lang-en>Download ready files or share with your team</span>
+          <span data-lang-kz>Дайын файлдарды жүктеп алыңыз немесе командамен бөлісіңіз</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ ECOSYSTEM ═══════ -->
+<section class="eco-section" id="ecosystem">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Экосистема</span>
+      <span data-lang-en>Ecosystem</span>
+      <span data-lang-kz>Экожүйе</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>ChefUP — операционная система<br>для HoReCa</span>
+      <span data-lang-en>ChefUP — the operating system<br>for HoReCa</span>
+      <span data-lang-kz>ChefUP — HoReCa үшін<br>операциялық жүйе</span>
+    </h2>
+    <p class="section-lead fade-up d2">
+      <span data-lang-ru>Пять ключевых сервисов, объединённых единым AI-слоем — охватывают весь жизненный цикл ресторанного бизнеса: от найма до закупок и обучения.</span>
+      <span data-lang-en>Five core services unified by a single AI intelligence layer — covering every dimension of the HoReCa business cycle, from hiring to procurement and education.</span>
+      <span data-lang-kz>Бірыңғай AI-қабатымен біріктірілген бес негізгі қызмет — жалдаудан сатып алу мен білім беруге дейін HoReCa бизнес циклінің барлық өлшемін қамтиды.</span>
+    </p>
+
+    <div class="eco-bento fade-up d3">
+
+      <!-- ChefUP Jobs -->
+      <div class="eco-card eco-card-jobs">
+        <div class="eco-icon eco-icon-brand">💼</div>
+        <span class="eco-badge eco-badge-brand">ChefUP Jobs</span>
+        <div class="eco-card-title">
+          <span data-lang-ru>Найдите топ-специалистов HoReCa или лучшее место работы</span>
+          <span data-lang-en>Find top HoReCa talent or your next opportunity</span>
+          <span data-lang-kz>Үздік HoReCa мамандарын немесе жұмыс орнын табыңыз</span>
+        </div>
+        <div class="eco-card-desc">
+          <span data-lang-ru>AI-маркетплейс подбора кадров — соединяет шеф-поваров, менеджеров и профессионалов гостеприимства с ведущими заведениями по всему миру.</span>
+          <span data-lang-en>AI-matched staffing marketplace connecting chefs, managers, and hospitality professionals with top establishments globally.</span>
+          <span data-lang-kz>AI-маркетплейс — аспаздар, менеджерлер және қонақжайлылық мамандарын бүкіл әлемдегі үздік мекемелермен байланыстырады.</span>
+        </div>
+        <div class="eco-stats">
+          <div class="eco-stat">
+            <span class="eco-stat-key"><span data-lang-ru>Активных вакансий</span><span data-lang-en>Active listings</span><span data-lang-kz>Белсенді вакансиялар</span></span>
+            <span class="eco-stat-val">1,200+</span>
+          </div>
+          <div class="eco-stat">
+            <span class="eco-stat-key"><span data-lang-ru>Скорость подбора</span><span data-lang-en>Match time</span><span data-lang-kz>Іріктеу жылдамдығы</span></span>
+            <span class="eco-stat-val">48h</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ChefUP Marketplace -->
+      <div class="eco-card eco-card-market">
+        <div class="eco-icon eco-icon-blue">🛒</div>
+        <span class="eco-badge eco-badge-blue">ChefUP Marketplace</span>
+        <div class="eco-card-title">
+          <span data-lang-ru>Глобальные закупки оборудования и продуктов</span>
+          <span data-lang-en>Global procurement for equipment and food products</span>
+          <span data-lang-kz>Жабдықтар мен тамақ өнімдерін жаһандық сатып алу</span>
+        </div>
+        <div class="eco-card-desc">
+          <span data-lang-ru>Покупайте у проверенных поставщиков, управляйте заказами и отслеживайте доставку — всё в одном интерфейсе.</span>
+          <span data-lang-en>Source from verified global suppliers. Manage POs and track deliveries — all in one interface.</span>
+          <span data-lang-kz>Тексерілген жаһандық жеткізушілерден сатып алыңыз. Тапсырыстарды басқарып, жеткізуді бақылаңыз.</span>
+        </div>
+      </div>
+
+      <!-- ChefUP Education -->
+      <div class="eco-card eco-card-edu">
+        <div class="eco-icon eco-icon-purple">🎓</div>
+        <span class="eco-badge eco-badge-purple">ChefUP Education</span>
+        <div class="eco-card-title">
+          <span data-lang-ru>Профессиональные курсы мирового уровня</span>
+          <span data-lang-en>World-class culinary and management courses</span>
+          <span data-lang-kz>Дүниежүзілік деңгейдегі кулинарлық және менеджмент курстары</span>
+        </div>
+        <div class="eco-card-desc">
+          <span data-lang-ru>Сертификации от Michelin-шефов и топ-отельеров — от HACCP до управления выручкой.</span>
+          <span data-lang-en>Certifications by Michelin-starred chefs and hospitality executives — from HACCP to revenue management.</span>
+          <span data-lang-kz>Michelin жұлдызды аспаздар мен топ менеджерлерден сертификаттар — HACCP-тен табыс менеджментіне дейін.</span>
+        </div>
+      </div>
+
+      <!-- Unified AI Core -->
+      <div class="eco-card eco-card-ai">
+        <div class="eco-ai-inner">
+          <div>
+            <div class="eco-icon eco-icon-green">🧠</div>
+            <span class="eco-badge eco-badge-green">ChefUP AI Core</span>
+            <div class="eco-card-title" style="margin-top:10px;">
+              <span data-lang-ru>Все сервисы. Один AI-слой.</span>
+              <span data-lang-en>All services. One intelligence layer.</span>
+              <span data-lang-kz>Барлық қызметтер. Бір AI-қабаты.</span>
+            </div>
+            <div class="eco-card-desc">
+              <span data-lang-ru>ChefUP AI соединяет все модули — данные о вакансиях питают модели затрат, обучение питает подбор персонала, закупки питают маржинальность рецептов.</span>
+              <span data-lang-en>ChefUP AI connects every module — jobs data feeds cost models, education feeds staffing, procurement feeds recipe margins.</span>
+              <span data-lang-kz>ChefUP AI барлық модульдерді байланыстырады — вакансиялар деректері шығын модельдерін, білім беру кадрлар іріктеуін, сатып алу рецепт маржасын қамтамасыз етеді.</span>
+            </div>
+          </div>
+          <a href="https://chefup.ai" target="_blank" class="eco-ai-link">
+            <span data-lang-ru>Открыть ChefUP.ai</span>
+            <span data-lang-en>Open ChefUP.ai</span>
+            <span data-lang-kz>ChefUP.ai ашу</span>
+            →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ CAPABILITIES ═══════ -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Возможности платформы</span>
+      <span data-lang-en>Platform Capabilities</span>
+      <span data-lang-kz>Платформа мүмкіндіктері</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Всё что нужно<br>для вашей операции</span>
+      <span data-lang-en>Everything your<br>operation needs</span>
+      <span data-lang-kz>Операцияңызға қажеттінің<br>барлығы</span>
+    </h2>
+    <p class="section-lead fade-up d2">
+      <span data-lang-ru>Структурированная рабочая среда — не чат-бот. Создана под сложность современной индустрии гостеприимства.</span>
+      <span data-lang-en>A structured workspace environment — not a chatbot. Built for the complexity of modern hospitality.</span>
+      <span data-lang-kz>Тек чат-бот емес, құрылымдық жұмыс ортасы. Заманауи қонақжайлылық индустриясының күрделілігі үшін жасалған.</span>
+    </p>
+
+    <!-- Row 1: 2 col -->
+    <div class="bevi-grid fade-up d3">
+      <div class="bevi-card">
+        <div class="bevi-card-icon gold-bg">🗂️</div>
+        <div class="bevi-card-sub">
+          <span data-lang-ru>Workspace</span>
+          <span data-lang-en>Workspace</span>
+          <span data-lang-kz>Workspace</span>
+        </div>
+        <div class="bevi-card-title">
+          <span data-lang-ru>Проектная организация</span>
+          <span data-lang-en>Project Organization</span>
+          <span data-lang-kz>Жобалық ұйымдастыру</span>
+        </div>
+        <div class="bevi-card-desc">
+          <span data-lang-ru>Держите данные вашего ресторана структурированными. Создавайте отдельные workspace для инжиниринга меню, HR-задач и финансового планирования — каждый со своим контекстом и библиотекой файлов.</span>
+          <span data-lang-en>Keep your restaurant's data structured. Create dedicated workspaces for menu engineering, HR tasks or financial planning — each with its own context and file library.</span>
+          <span data-lang-kz>Мейрамхананың деректерін реттелген күйде сақтаңыз. Мәзір инженериясы, HR тапсырмалары немесе қаржылық жоспарлауға арналған жеке workspace жасаңыз.</span>
+        </div>
+        <span class="bevi-badge">
+          <span data-lang-ru>До 20 проектов</span>
+          <span data-lang-en>Up to 20 projects</span>
+          <span data-lang-kz>20-ға дейін жоба</span>
+        </span>
+      </div>
+
+      <div class="bevi-card">
+        <div class="bevi-card-icon blue-bg">💬</div>
+        <div class="bevi-card-sub">
+          <span data-lang-ru>Контекстные чаты</span>
+          <span data-lang-en>Contextual Chats</span>
+          <span data-lang-kz>Контекстік чаттар</span>
+        </div>
+        <div class="bevi-card-title">
+          <span data-lang-ru>Умные контекстные беседы</span>
+          <span data-lang-en>Smart Contextual Threads</span>
+          <span data-lang-kz>Ақылды контекстік тредтер</span>
+        </div>
+        <div class="bevi-card-desc">
+          <span data-lang-ru>Треды категоризированы по задаче. AI-ассистент остаётся сфокусированным на конкретном контексте проекта, не смешивая рабочие потоки. Каждый чат помнит всю историю проекта.</span>
+          <span data-lang-en>Threads categorized by task. Your AI assistant stays focused on the specific project context without mixing workflows. Every chat remembers the full project history.</span>
+          <span data-lang-kz>Тредтер тапсырма бойынша санаттастырылған. AI-ассистент жұмыс ағындарын араластырмай, белгілі бір жоба контекстіне шоғырланады.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: 3 col -->
+    <div class="bevi-grid bevi-grid-3 fade-up d4">
+      <div class="bevi-card">
+        <div class="bevi-card-icon green-bg">📄</div>
+        <div class="bevi-card-sub">
+          <span data-lang-ru>Документы</span>
+          <span data-lang-en>Documents</span>
+          <span data-lang-kz>Құжаттар</span>
+        </div>
+        <div class="bevi-card-title">
+          <span data-lang-ru>Мгновенная генерация файлов</span>
+          <span data-lang-en>Instant File Generation</span>
+          <span data-lang-kz>Файлдарды лезде генерациялау</span>
+        </div>
+        <div class="bevi-card-desc">
+          <span data-lang-ru>Генерируйте, экспортируйте и храните ТТК, HACCP-документы и Excel-модели прямо внутри чата — в один клик.</span>
+          <span data-lang-en>Generate, export and store TTK, HACCP documents and Excel financial models directly inside the chat — in one click.</span>
+          <span data-lang-kz>ТТК, HACCP-құжаттарды және Excel-модельдерді чаттың ішінде бір рет басып жасаңыз.</span>
+        </div>
+        <div class="doc-chips">
+          <span class="doc-chip">ТТК</span>
+          <span class="doc-chip">HACCP</span>
+          <span class="doc-chip">Excel</span>
+          <span class="doc-chip">PDF</span>
+        </div>
+      </div>
+
+      <div class="bevi-card">
+        <div class="bevi-card-icon gold-bg">📊</div>
+        <div class="bevi-card-sub">
+          <span data-lang-ru>Финансы</span>
+          <span data-lang-en>Finance</span>
+          <span data-lang-kz>Қаржы</span>
+        </div>
+        <div class="bevi-card-title">
+          <span data-lang-ru>Финансовое моделирование</span>
+          <span data-lang-en>Financial Modeling</span>
+          <span data-lang-kz>Қаржылық модельдеу</span>
+        </div>
+        <div class="bevi-card-desc">
+          <span data-lang-ru>Анализ food cost, P&L-прогнозирование и дашборды рентабельности — автоматически из ваших операционных данных.</span>
+          <span data-lang-en>Food cost analysis, P&L forecasting and profitability dashboards — automatically from your operational data.</span>
+          <span data-lang-kz>Food cost талдауы, P&L болжамы және рентабельділік дашборды — операциялық деректеріңізден автоматты түрде.</span>
+        </div>
+      </div>
+
+      <div class="bevi-card">
+        <div class="bevi-card-icon silver-bg">🔒</div>
+        <div class="bevi-card-sub">
+          <span data-lang-ru>Enterprise-безопасность</span>
+          <span data-lang-en>Enterprise Security</span>
+          <span data-lang-kz>Кәсіпорын қауіпсіздігі</span>
+        </div>
+        <div class="bevi-card-title">
+          <span data-lang-ru>Безопасность и контроль</span>
+          <span data-lang-en>Security & Control</span>
+          <span data-lang-kz>Қауіпсіздік және бақылау</span>
+        </div>
+        <div class="bevi-card-desc">
+          <span data-lang-ru>Ролевое разграничение доступа. Операционные данные остаются приватными и проверяемыми. Соответствие корпоративным стандартам.</span>
+          <span data-lang-en>Role-based access control. Your operational data stays private and auditable. Compliance with enterprise standards.</span>
+          <span data-lang-kz>Рөлге негізделген қол жеткізу бақылауы. Операциялық деректеріңіз жеке және тексерілетін болып қалады.</span>
+        </div>
+        <span class="bevi-badge">SOC 2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ USE CASES ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Для каждой роли</span>
+      <span data-lang-en>For Every Role</span>
+      <span data-lang-kz>Әр рөл үшін</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Создан для каждого<br>сотрудника вашей организации</span>
+      <span data-lang-en>Built for every person<br>in your organization</span>
+      <span data-lang-kz>Ұйымыңыздағы<br>әр адам үшін жасалған</span>
+    </h2>
+    <p class="section-lead fade-up d2">
+      <span data-lang-ru>ChefUP.ai адаптируется под конкретный рабочий процесс каждого специалиста в вашем заведении.</span>
+      <span data-lang-en>ChefUP.ai adapts to the specific workflow of each specialist in your establishment.</span>
+      <span data-lang-kz>ChefUP.ai мекемеңіздегі әрбір маманның нақты жұмыс процесіне бейімделеді.</span>
+    </p>
+
+    <div class="fade-up d3">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="chef">
+          <span class="tab-emoji">🧑‍🍳</span>
+          <span data-lang-ru>Шеф-повара</span>
+          <span data-lang-en>Chefs</span>
+          <span data-lang-kz>Аспаздар</span>
+        </button>
+        <button class="tab-btn" data-tab="manager">
+          <span class="tab-emoji">👨‍💼</span>
+          <span data-lang-ru>Менеджеры</span>
+          <span data-lang-en>Managers</span>
+          <span data-lang-kz>Менеджерлер</span>
+        </button>
+        <button class="tab-btn" data-tab="owner">
+          <span class="tab-emoji">📈</span>
+          <span data-lang-ru>Владельцы</span>
+          <span data-lang-en>Owners</span>
+          <span data-lang-kz>Иелер</span>
+        </button>
+      </div>
+
+      <!-- CHEF TAB -->
+      <div class="tab-panel active" id="tab-chef">
+        <div class="tab-panel-left">
+          <h3>
+            <span data-lang-ru>Для шеф-поваров</span>
+            <span data-lang-en>For Executive Chefs</span>
+            <span data-lang-kz>Бас аспаздар үшін</span>
+          </h3>
+          <p>
+            <span data-lang-ru>Управляйте рецептами, калькуляцией и документацией с AI, который знает кухню изнутри.</span>
+            <span data-lang-en>Manage recipes, costing and documentation with an AI that knows the kitchen from the inside.</span>
+            <span data-lang-kz>Асхананы іштей білетін AI-мен рецепттерді, калькуляцияны және құжаттаманы басқарыңыз.</span>
+          </p>
+          <a href="#cta" class="btn-primary" style="display:inline-flex;">
+            <span data-lang-ru>Попробовать как шеф</span>
+            <span data-lang-en>Try as Chef</span>
+            <span data-lang-kz>Аспаз ретінде көріп көру</span>
+          </a>
+        </div>
+        <div class="role-features">
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Генерация рецептов</strong> с масштабированием и отслеживанием аллергенов</span>
+              <span data-lang-en><strong>Recipe generation</strong> & scaling with allergen tracking</span>
+              <span data-lang-kz><strong>Рецепт генерациясы</strong> алергендерді бақылаумен өлшеулеу</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Автоматический расчёт food cost</strong> по каждому блюду</span>
+              <span data-lang-en><strong>Automated Food Cost</strong> calculation per dish</span>
+              <span data-lang-kz>Әр тағам үшін <strong>food cost автоматты есептеу</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Технико-технологические карты (ТТК)</strong> в один клик</span>
+              <span data-lang-en><strong>Technical & Routing Cards (TTK)</strong> generated in one click</span>
+              <span data-lang-kz>Бір басумен <strong>Техникалық-технологиялық карталар (ТТК)</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>HACCP-документация</strong> и чек-листы соответствия</span>
+              <span data-lang-en><strong>HACCP documentation</strong> and compliance checklists</span>
+              <span data-lang-kz><strong>HACCP-құжаттама</strong> және сәйкестік чек-листтері</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Сезонный инжиниринг меню</strong> с анализом трендов</span>
+              <span data-lang-en><strong>Seasonal menu engineering</strong> with trend analysis</span>
+              <span data-lang-kz>Тренд талдауымен <strong>маусымдық мәзір инженериясы</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru>Шаблоны для <strong>коммуникации с поставщиками</strong></span>
+              <span data-lang-en><strong>Supplier communication</strong> templates</span>
+              <span data-lang-kz><strong>Жеткізушілермен байланыс</strong> үшін шаблондар</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGER TAB -->
+      <div class="tab-panel" id="tab-manager">
+        <div class="tab-panel-left">
+          <h3>
+            <span data-lang-ru>Для менеджеров</span>
+            <span data-lang-en>For Restaurant Managers</span>
+            <span data-lang-kz>Менеджерлер үшін</span>
+          </h3>
+          <p>
+            <span data-lang-ru>Управляйте операциями с точностью. Графики, скрипты, отчёты — всё в одном месте.</span>
+            <span data-lang-en>Operate with precision. Schedules, scripts, reports — all in one place.</span>
+            <span data-lang-kz>Дәлдікпен жұмыс жасаңыз. Кестелер, скриптер, есептер — барлығы бір жерде.</span>
+          </p>
+          <a href="#cta" class="btn-primary" style="display:inline-flex;">
+            <span data-lang-ru>Попробовать как менеджер</span>
+            <span data-lang-en>Try as Manager</span>
+            <span data-lang-kz>Менеджер ретінде көріп көру</span>
+          </a>
+        </div>
+        <div class="role-features">
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Умное составление графиков</strong> смен с оптимизацией под посадку</span>
+              <span data-lang-en><strong>Intelligent shift scheduling</strong> optimized for covers</span>
+              <span data-lang-kz>Отырғызуға оптималдандырылған <strong>ақылды ауысым кестесі</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Скрипты продаж и апсела</strong> для персонала зала</span>
+              <span data-lang-en><strong>Cross-sell & upsell scripts</strong> for floor staff</span>
+              <span data-lang-kz>Зал қызметкерлері үшін <strong>сату және апсел скриптері</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru>Шаблоны <strong>оценки производительности сотрудников</strong></span>
+              <span data-lang-en><strong>Staff performance review</strong> templates</span>
+              <span data-lang-kz><strong>Қызметкерлер өнімділігін бағалау</strong> шаблондары</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Отчёты по инвентаризации</strong> и сигналы о дозаказе</span>
+              <span data-lang-en><strong>Inventory control reports</strong> and reorder alerts</span>
+              <span data-lang-kz><strong>Түгендеу есептері</strong> және қайта тапсырыс берілу сигналдары</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Фреймворки ответов</strong> на жалобы гостей</span>
+              <span data-lang-en><strong>Guest complaint response</strong> frameworks</span>
+              <span data-lang-kz>Қонақтардың шағымдарына <strong>жауап беру шеңберлері</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Обучающие материалы</strong> для новых сотрудников</span>
+              <span data-lang-en><strong>Training materials</strong> generation for new hires</span>
+              <span data-lang-kz>Жаңа қызметкерлер үшін <strong>оқыту материалдары</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OWNER TAB -->
+      <div class="tab-panel" id="tab-owner">
+        <div class="tab-panel-left">
+          <h3>
+            <span data-lang-ru>Для владельцев и инвесторов</span>
+            <span data-lang-en>For Owners & Investors</span>
+            <span data-lang-kz>Иелер мен инвесторлар үшін</span>
+          </h3>
+          <p>
+            <span data-lang-ru>Полная видимость операций. Стратегические инсайты. Данные для принятия решений.</span>
+            <span data-lang-en>Full visibility across operations. Strategic insights. Data-driven decision making.</span>
+            <span data-lang-kz>Операциялар бойынша толық көрінбе. Стратегиялық инсайттар. Деректерге негізделген шешім қабылдау.</span>
+          </p>
+          <a href="#cta" class="btn-primary" style="display:inline-flex;">
+            <span data-lang-ru>Попробовать как владелец</span>
+            <span data-lang-en>Try as Owner</span>
+            <span data-lang-kz>Иесі ретінде көріп көру</span>
+          </a>
+        </div>
+        <div class="role-features">
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Анализ рентабельности</strong> по локациям и концепциям</span>
+              <span data-lang-en><strong>Profitability analysis</strong> by location and concept</span>
+              <span data-lang-kz>Локация және тұжырымдама бойынша <strong>рентабельділік талдауы</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Прогнозирование глобальных трендов</strong> F&B со стратегическими инсайтами</span>
+              <span data-lang-en><strong>Global F&B trend forecasting</strong> with strategic insight</span>
+              <span data-lang-kz>Стратегиялық инсайттармен <strong>жаһандық F&B тренд болжамы</strong></span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru>Генерация <strong>финансовых моделей для инвесторов</strong></span>
+              <span data-lang-en><strong>Investor-ready financial model</strong> generation</span>
+              <span data-lang-kz><strong>Инвесторларға арналған қаржылық модель</strong> генерациясы</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Бенчмаркинг</strong> по нескольким точкам и KPI-дашборды</span>
+              <span data-lang-en><strong>Multi-unit benchmarking</strong> and KPI dashboards</span>
+              <span data-lang-kz><strong>Бірнеше нүкте бойынша бенчмаркинг</strong> және KPI дашборды</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru>Исследования <strong>осуществимости расширения</strong> франшизы</span>
+              <span data-lang-en><strong>Franchise expansion feasibility</strong> studies</span>
+              <span data-lang-kz><strong>Франшиза кеңейтудің орындылық</strong> зерттеулері</span>
+            </div>
+          </div>
+          <div class="role-feature-item">
+            <div class="role-feature-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="role-feature-text">
+              <span data-lang-ru><strong>Автоматические еженедельные сводки</strong> для совета директоров</span>
+              <span data-lang-en><strong>Board-level summary reports</strong> auto-generated weekly</span>
+              <span data-lang-kz>Директорлар кеңесі үшін <strong>автоматты апталық есептер</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /fade-up -->
+  </div>
+</section>
+
+<!-- ═══════ WHY CHEFUP ═══════ -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Почему ChefUP</span>
+      <span data-lang-en>Why ChefUP</span>
+      <span data-lang-kz>Неліктен ChefUP</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Платформа, созданная<br>для HoReCa-операторов</span>
+      <span data-lang-en>The platform built<br>for HoReCa operators</span>
+      <span data-lang-kz>HoReCa операторлары үшін<br>жасалған платформа</span>
+    </h2>
+    <p class="section-lead fade-up d2">
+      <span data-lang-ru>Традиционные POS, ERP и HR-системы не созданы для сложности современной гостеприимности. ChefUP — первая платформа, построенная с нуля именно для этой индустрии.</span>
+      <span data-lang-en>Legacy POS, ERP, and HR systems were not designed for the complexity of modern hospitality. ChefUP is the first platform built from the ground up for this industry.</span>
+      <span data-lang-kz>Дәстүрлі POS, ERP және HR жүйелері заманауи қонақжайлылықтың күрделілігіне арналмаған. ChefUP — осы индустрия үшін нуліден жасалған алғашқы платформа.</span>
+    </p>
+
+    <div class="why-grid fade-up d3">
+      <div class="why-card">
+        <div class="why-card-icon">🧩</div>
+        <div class="why-card-title">
+          <span data-lang-ru>Одна платформа, ноль фрагментации</span>
+          <span data-lang-en>One platform, zero fragmentation</span>
+          <span data-lang-kz>Бір платформа, нөл фрагментация</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Вакансии, закупки, обучение, AI-аналитика — объединены в одном интерфейсе. Никакого жонглирования десятком разрозненных инструментов.</span>
+          <span data-lang-en>Jobs, procurement, education, AI analytics — unified in a single interface. No more juggling a dozen disconnected tools.</span>
+          <span data-lang-kz>Вакансиялар, сатып алу, оқыту, AI аналитика — бір интерфейсте біріктірілген. Ондаған бөлінген құралдармен жонглерлеу жоқ.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🤖</div>
+        <div class="why-card-title">
+          <span data-lang-ru>AI-native с первого дня</span>
+          <span data-lang-en>AI-native from day one</span>
+          <span data-lang-kz>Бірінші күннен AI-native</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Искусственный интеллект — не надстройка, а ядро, которое управляет каждой рекомендацией, прогнозом и рабочим процессом платформы.</span>
+          <span data-lang-en>AI isn't a feature bolted on — it's the core layer driving every recommendation, forecast, and workflow across the platform.</span>
+          <span data-lang-kz>Жасанды интеллект — қосымша мүмкіндік емес, платформадағы әрбір ұсыныс, болжам және жұмыс процесін басқаратын ядро.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🍽️</div>
+        <div class="why-card-title">
+          <span data-lang-ru>Глубокая экспертиза HoReCa</span>
+          <span data-lang-en>Deep HoReCa domain expertise</span>
+          <span data-lang-kz>Терең HoReCa салалық тәжірибе</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Построено командой, которая работала внутри ресторанов, отельных сетей и кейтеринга. Каждая функция решает реальную операционную проблему.</span>
+          <span data-lang-en>Built by a team that worked inside restaurants, hotel chains, and catering operations. Every feature solves a real operational pain point.</span>
+          <span data-lang-kz>Мейрамханаларда, қонақүй желілерінде және кейтерингте жұмыс жасаған команда жасаған. Әрбір мүмкіндік нақты операциялық мәселені шешеді.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📊</div>
+        <div class="why-card-title">
+          <span data-lang-ru>Маржинальность в реальном времени</span>
+          <span data-lang-en>Real-time margin intelligence</span>
+          <span data-lang-kz>Нақты уақытта маржа аналитикасы</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Отслеживание живых затрат от 1 200+ поставщиков, динамическая себестоимость рецептов и P&L-видимость по каждому объекту — не только в квартальных отчётах.</span>
+          <span data-lang-en>Live cost tracking from 1,200+ suppliers, dynamic recipe costing, and P&L visibility at every unit — not just quarterly reports.</span>
+          <span data-lang-kz>1 200+ жеткізушіден тікелей шығын бақылау, рецепттердің динамикалық өзіндік құны және әр нысанда P&L көрінуі.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🌐</div>
+        <div class="why-card-title">
+          <span data-lang-ru>Глобальный охват, локальная глубина</span>
+          <span data-lang-en>Global reach, local depth</span>
+          <span data-lang-kz>Жаһандық қамту, жергілікті тереңдік</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Разработано для масштабирования на рынки СНГ, MENA, SEA и другие — с многоязычной поддержкой и локальными сетями поставщиков.</span>
+          <span data-lang-en>Designed to scale across CIS, MENA, SEA and beyond — with multilingual support, local supplier networks, and region-specific compliance modules.</span>
+          <span data-lang-kz>ТМД, MENA, SEA және одан тысқары нарықтарда масштабталу үшін жасалған — көптілді қолдаумен және жергілікті жеткізуші желілерімен.</span>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">💰</div>
+        <div class="why-card-title">
+          <span data-lang-ru>Прозрачное, масштабируемое ценообразование</span>
+          <span data-lang-en>Transparent, scalable pricing</span>
+          <span data-lang-kz>Мөлдір, масштабталатын баға белгілеу</span>
+        </div>
+        <div class="why-card-desc">
+          <span data-lang-ru>Никаких скрытых интеграционных сборов или привязки к поставщику. Модульные тарифы, которые растут вместе с вашей операцией — от одного кафе до 500+ объектов.</span>
+          <span data-lang-en>No hidden integration fees or vendor lock-in. Modular pricing that grows with your operation — from a single café to a 500-unit hotel group.</span>
+          <span data-lang-kz>Жасырын интеграция төлемдері немесе жеткізушіге тәуелділік жоқ. Бір кафеден 500+ нысанға дейін өсетін модульдік тарифтер.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legacy vs ChefUP comparison -->
+    <div class="why-vs fade-up d4">
+      <div class="why-vs-col">
+        <div class="why-vs-col-title legacy">
+          <span data-lang-ru>Устаревшие решения</span>
+          <span data-lang-en>Legacy Solutions</span>
+          <span data-lang-kz>Ескі шешімдер</span>
+        </div>
+        <div class="why-vs-row">
+          <div class="why-vs-item negative"><span class="why-vs-icon">✕</span><span data-lang-ru>Разрозненные инструменты под каждую функцию</span><span data-lang-en>Disconnected point solutions per function</span><span data-lang-kz>Әр функцияға арналған бөлінген құралдар</span></div>
+          <div class="why-vs-item negative"><span class="why-vs-icon">✕</span><span data-lang-ru>Ручные отчёты без прогностики</span><span data-lang-en>Manual reporting, no predictive intelligence</span><span data-lang-kz>Болжау жоқ, қолмен есеп беру</span></div>
+          <div class="why-vs-item negative"><span class="why-vs-icon">✕</span><span data-lang-ru>Дорогие кастомные интеграции</span><span data-lang-en>Expensive custom integrations for every system</span><span data-lang-kz>Әр жүйеге арналған қымбат теңшелген интеграциялар</span></div>
+          <div class="why-vs-item negative"><span class="why-vs-icon">✕</span><span data-lang-ru>Универсальный софт, не для F&B</span><span data-lang-en>Generic software not built for F&B operations</span><span data-lang-kz>F&B операциялары үшін жасалмаған жалпы бағдарлама</span></div>
+          <div class="why-vs-item negative"><span class="why-vs-icon">✕</span><span data-lang-ru>Месяцы внедрения, зависимость от IT</span><span data-lang-en>Months to deploy, heavy IT dependency</span><span data-lang-kz>Айлар бойы орналастыру, IT-ге тәуелділік</span></div>
+        </div>
+      </div>
+      <div class="why-vs-divider"></div>
+      <div class="why-vs-col">
+        <div class="why-vs-col-title chefup">ChefUP</div>
+        <div class="why-vs-row">
+          <div class="why-vs-item positive"><span class="why-vs-icon">✓</span><span data-lang-ru>Единая платформа — все модули в одном месте</span><span data-lang-en>Unified platform — all modules in one place</span><span data-lang-kz>Бірыңғай платформа — барлық модульдер бір жерде</span></div>
+          <div class="why-vs-item positive"><span class="why-vs-icon">✓</span><span data-lang-ru>AI-прогнозирование и аналитика в реальном времени</span><span data-lang-en>AI-powered forecasting and real-time analytics</span><span data-lang-kz>AI-болжау және нақты уақытта аналитика</span></div>
+          <div class="why-vs-item positive"><span class="why-vs-icon">✓</span><span data-lang-ru>Открытый API, коннекторы к POS и ERP</span><span data-lang-en>Open API, pre-built connectors to major POS & ERP</span><span data-lang-kz>Ашық API, POS және ERP-ке дайын коннекторлар</span></div>
+          <div class="why-vs-item positive"><span class="why-vs-icon">✓</span><span data-lang-ru>Создано для HoReCa с первого дня</span><span data-lang-en>Purpose-built for HoReCa operations from day one</span><span data-lang-kz>Бірінші күннен HoReCa операциялары үшін жасалған</span></div>
+          <div class="why-vs-item positive"><span class="why-vs-icon">✓</span><span data-lang-ru>Запуск за дни, самостоятельный онбординг</span><span data-lang-en>Launch in days, self-service onboarding</span><span data-lang-kz>Күндер ішінде іске қосу, өздігінен онбординг</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ROADMAP ═══════ -->
+<section class="rm-section" id="roadmap">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Roadmap</span>
+      <span data-lang-en>Roadmap</span>
+      <span data-lang-kz>Roadmap</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Строим путь<br>к глобальному масштабу</span>
+      <span data-lang-en>Building toward<br>global scale</span>
+      <span data-lang-kz>Жаһандық масштабқа<br>жол саламыз</span>
+    </h2>
+    <p class="section-lead fade-up d2">
+      <span data-lang-ru>От фундамента продукта до международной экспансии — чёткий путь от PreSeed до лидерства на рынке HoReCa объёмом $146B.</span>
+      <span data-lang-en>From product foundation to international expansion — a clear path from PreSeed to market leadership in the $146B HoReCa industry.</span>
+      <span data-lang-kz>Өнім негізінен халықаралық экспансияға дейін — PreSeed-тен $146B HoReCa индустриясындағы нарық көшбасшылығына дейінгі нақты жол.</span>
+    </p>
+
+    <div class="rm-wrap fade-up d3">
+      <div class="rm-line"></div>
+      <div class="rm-items">
+
+        <!-- Phase 0 — DONE -->
+        <div class="rm-item">
+          <div class="rm-content">
+            <div class="rm-phase">
+              <span data-lang-ru>Фаза 0 · Q1–Q2 2025</span>
+              <span data-lang-en>Phase 0 · Q1–Q2 2025</span>
+              <span data-lang-kz>Фаза 0 · Q1–Q2 2025</span>
+            </div>
+            <div class="rm-title">
+              <span data-lang-ru>Фундамент платформы</span>
+              <span data-lang-en>Platform Foundation</span>
+              <span data-lang-kz>Платформа негізі</span>
+            </div>
+            <div class="rm-desc">
+              <span data-lang-ru>Базовая архитектура, AI-ядро, модуль ChefUP.ai и команда из 12 инженеров и отраслевых экспертов. Технологический стек валидирован.</span>
+              <span data-lang-en>Core architecture, AI engine, ChefUP.ai module, and team of 12 engineers and industry experts. Technology stack validated.</span>
+              <span data-lang-kz>Негізгі архитектура, AI-ядро, ChefUP.ai модулі және 12 инженерден тұратын команда. Технологиялық стек тексерілген.</span>
+            </div>
+            <div class="rm-tags">
+              <span class="rm-tag"><span data-lang-ru>Архитектура</span><span data-lang-en>Architecture</span><span data-lang-kz>Архитектура</span></span>
+              <span class="rm-tag">AI Core</span>
+              <span class="rm-tag">Team 12</span>
+            </div>
+          </div>
+          <div class="rm-dot-col">
+            <div class="rm-dot done">✓</div>
+            <div class="rm-status done"><span data-lang-ru>Готово</span><span data-lang-en>Done</span><span data-lang-kz>Дайын</span></div>
+          </div>
+          <div class="rm-spacer"></div>
+        </div>
+
+        <!-- Phase 1 — ACTIVE -->
+        <div class="rm-item">
+          <div class="rm-spacer"></div>
+          <div class="rm-dot-col">
+            <div class="rm-dot active">🔥</div>
+            <div class="rm-status active"><span data-lang-ru>В процессе</span><span data-lang-en>Active</span><span data-lang-kz>Белсенді</span></div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">
+              <span data-lang-ru>Фаза 1 · Q3–Q4 2025</span>
+              <span data-lang-en>Phase 1 · Q3–Q4 2025</span>
+              <span data-lang-kz>Фаза 1 · Q3–Q4 2025</span>
+            </div>
+            <div class="rm-title">
+              <span data-lang-ru>PreSeed и ранний доступ</span>
+              <span data-lang-en>PreSeed & Early Access</span>
+              <span data-lang-kz>PreSeed және ерте қол жеткізу</span>
+            </div>
+            <div class="rm-desc">
+              <span data-lang-ru>PreSeed-раунд, публичный запуск раннего доступа, первые 50 пилотных ресторанов в СНГ. Валидация product-market fit.</span>
+              <span data-lang-en>PreSeed fundraising, public early-access launch, first 50 pilot restaurants across CIS. Product-market fit validation.</span>
+              <span data-lang-kz>PreSeed қаржыландыру, ранний қол жеткізуді іске қосу, ТМД бойынша алғашқы 50 пилот мейрамхана. Product-market fit тексеру.</span>
+            </div>
+            <div class="rm-tags">
+              <span class="rm-tag">PreSeed Round</span>
+              <span class="rm-tag">50 Pilots</span>
+              <span class="rm-tag"><span data-lang-ru>СНГ-запуск</span><span data-lang-en>CIS Launch</span><span data-lang-kz>ТМД іске қосу</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2 — UPCOMING -->
+        <div class="rm-item">
+          <div class="rm-content">
+            <div class="rm-phase">
+              <span data-lang-ru>Фаза 2 · Q1–Q2 2026</span>
+              <span data-lang-en>Phase 2 · Q1–Q2 2026</span>
+              <span data-lang-kz>Фаза 2 · Q1–Q2 2026</span>
+            </div>
+            <div class="rm-title">
+              <span data-lang-ru>Seed-раунд и коммерческий запуск</span>
+              <span data-lang-en>Seed Round & Commercial Launch</span>
+              <span data-lang-kz>Seed раунды және коммерциялық іске қосу</span>
+            </div>
+            <div class="rm-desc">
+              <span data-lang-ru>Seed-раунд, полный коммерческий запуск, маркетплейс с 500+ верифицированными поставщиками, выход на рынки MENA и SEA.</span>
+              <span data-lang-en>Seed fundraise, full commercial launch, marketplace with 500+ verified suppliers, expansion into MENA and SEA markets.</span>
+              <span data-lang-kz>Seed раунды, толық коммерциялық іске қосу, 500+ тексерілген жеткізушілері бар маркетплейс, MENA және SEA нарықтарына шығу.</span>
+            </div>
+            <div class="rm-tags">
+              <span class="rm-tag">Seed Round</span>
+              <span class="rm-tag">500+ Venues</span>
+              <span class="rm-tag">MENA / SEA</span>
+            </div>
+          </div>
+          <div class="rm-dot-col">
+            <div class="rm-dot">🌱</div>
+            <div class="rm-status future"><span data-lang-ru>Скоро</span><span data-lang-en>Upcoming</span><span data-lang-kz>Жоспарда</span></div>
+          </div>
+          <div class="rm-spacer"></div>
+        </div>
+
+        <!-- Phase 3 — FUTURE -->
+        <div class="rm-item">
+          <div class="rm-spacer"></div>
+          <div class="rm-dot-col">
+            <div class="rm-dot">🌍</div>
+            <div class="rm-status future"><span data-lang-ru>Будущее</span><span data-lang-en>Future</span><span data-lang-kz>Болашақ</span></div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">
+              <span data-lang-ru>Фаза 3 · 2027+</span>
+              <span data-lang-en>Phase 3 · 2027+</span>
+              <span data-lang-kz>Фаза 3 · 2027+</span>
+            </div>
+            <div class="rm-title">
+              <span data-lang-ru>Глобальный масштаб и Series A</span>
+              <span data-lang-en>Global Scale & Series A</span>
+              <span data-lang-kz>Жаһандық масштаб және Series A</span>
+            </div>
+            <div class="rm-desc">
+              <span data-lang-ru>Series A-раунд, экспансия в 50+ стран, 10 000+ активных объектов, полная экосистема с Marketplace и Education-модулями.</span>
+              <span data-lang-en>Series A, expansion to 50+ countries, 10,000+ active venues, full ecosystem with Marketplace and Education modules live.</span>
+              <span data-lang-kz>Series A раунды, 50+ елге экспансия, 10 000+ белсенді нысан, Marketplace және Education модульдерімен толық экожүйе.</span>
+            </div>
+            <div class="rm-tags">
+              <span class="rm-tag">Series A</span>
+              <span class="rm-tag">50+ <span data-lang-ru>стран</span><span data-lang-en>countries</span><span data-lang-kz>ел</span></span>
+              <span class="rm-tag">10K+ Venues</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-badge fade-up">
+      <span class="cta-badge-dot"></span>
+      <span data-lang-ru>Присоединяйтесь к будущему гастрономии</span>
+      <span data-lang-en>Join the Future of Gastronomy</span>
+      <span data-lang-kz>Гастрономияның болашағына қосылыңыз</span>
+    </div>
+    <h2 class="cta-h2 fade-up d1">
+      <span data-lang-ru>Начните работать<br>умнее уже сегодня</span>
+      <span data-lang-en>Start working<br>smarter today</span>
+      <span data-lang-kz>Бүгін ақылды жұмыс<br>жасай бастаңыз</span>
+    </h2>
+    <p class="cta-sub fade-up d2">
+      <span data-lang-ru>Тысячи профессионалов HoReCa уже оптимизируют свои операции с ChefUP.ai. Первый workspace — бесплатно.</span>
+      <span data-lang-en>Thousands of HoReCa professionals are already optimizing their operations with ChefUP.ai. First workspace is free.</span>
+      <span data-lang-kz>Мыңдаған HoReCa мамандары ChefUP.ai-мен операцияларын оңтайландырып жатыр. Бірінші workspace — тегін.</span>
+    </p>
+    <div class="cta-actions fade-up d3">
+      <a href="#" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+        <span data-lang-ru>Создать Workspace — Бесплатно</span>
+        <span data-lang-en>Create Workspace — Free</span>
+        <span data-lang-kz>Workspace жасау — Тегін</span>
+      </a>
+      <a href="#" class="btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span data-lang-ru>Записаться на Enterprise-демо</span>
+        <span data-lang-en>Book Enterprise Demo</span>
+        <span data-lang-kz>Enterprise демосына жазылу</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MARKET METRICS ═══════ -->
+<section class="metrics-section" id="metrics">
+  <div class="container">
+    <div class="section-tag fade-up">
+      <span data-lang-ru>Данные компании и рынка</span>
+      <span data-lang-en>Company Data & Global Scale</span>
+      <span data-lang-kz>Компания және нарық деректері</span>
+    </div>
+    <h2 class="section-h2 fade-up d1">
+      <span data-lang-ru>Построено для глобального масштаба.<br>Проверено на каждом объекте.</span>
+      <span data-lang-en>Built for global scale.<br>Proven at every unit.</span>
+      <span data-lang-kz>Жаһандық масштаб үшін жасалған.<br>Әр нысанда дәлелденген.</span>
+    </h2>
+
+    <div class="stats-grid fade-up d2">
+      <div class="stat-card" style="--sg:rgba(249,115,22,0.07);">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-value sv-brand">$146B</div>
+        <div class="stat-label"><span data-lang-ru>Глобальный TAM</span><span data-lang-en>Global TAM</span><span data-lang-kz>Жаһандық TAM</span></div>
+        <div class="stat-sub"><span data-lang-ru>Глобальный адресуемый рынок HoReCa</span><span data-lang-en>HoReCa total addressable market</span><span data-lang-kz>HoReCa жалпы адресалды нарығы</span></div>
+      </div>
+      <div class="stat-card" style="--sg:rgba(52,211,153,0.06);">
+        <div class="stat-icon">📈</div>
+        <div class="stat-value sv-green">250–300%</div>
+        <div class="stat-label"><span data-lang-ru>Рост маржинальности</span><span data-lang-en>Margin Retention</span><span data-lang-kz>Маржа өсімі</span></div>
+        <div class="stat-sub"><span data-lang-ru>Прирост валовой маржи для интегрированных операторов</span><span data-lang-en>Gross margin uplift for integrated operators</span><span data-lang-kz>Интеграцияланған операторларға арналған жалпы маржа өсімі</span></div>
+      </div>
+      <div class="stat-card" style="--sg:rgba(96,165,250,0.06);">
+        <div class="stat-icon">👤</div>
+        <div class="stat-value sv-blue">2 400+</div>
+        <div class="stat-label"><span data-lang-ru>Ранний доступ</span><span data-lang-en>Early Access</span><span data-lang-kz>Ерте қол жеткізу</span></div>
+        <div class="stat-sub"><span data-lang-ru>Регистрации в 14 странах</span><span data-lang-en>Registrations across 14 countries</span><span data-lang-kz>14 елдегі тіркелулер</span></div>
+      </div>
+      <div class="stat-card" style="--sg:rgba(167,139,250,0.06);">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-value sv-purple">&lt; 3 мес</div>
+        <div class="stat-label"><span data-lang-ru>Срок окупаемости</span><span data-lang-en>Payback Period</span><span data-lang-kz>Өтелу мерзімі</span></div>
+        <div class="stat-sub"><span data-lang-ru>Средний горизонт ROI для ресторанных операторов</span><span data-lang-en>Average ROI timeline for restaurant operators</span><span data-lang-kz>Мейрамхана операторлары үшін орта ROI уақыты</span></div>
+      </div>
+      <div class="stat-card" style="--sg:rgba(249,115,22,0.07);">
+        <div class="stat-icon">🔧</div>
+        <div class="stat-value sv-brand">5+</div>
+        <div class="stat-label"><span data-lang-ru>Ключевых модулей</span><span data-lang-en>Core Modules</span><span data-lang-kz>Негізгі модульдер</span></div>
+        <div class="stat-sub">AI, Jobs, Marketplace, Education, Analytics</div>
+      </div>
+      <div class="stat-card" style="--sg:rgba(6,182,212,0.06);">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-value sv-cyan">1 200+</div>
+        <div class="stat-label"><span data-lang-ru>Сеть поставщиков</span><span data-lang-en>Supplier Network</span><span data-lang-kz>Жеткізушілер желісі</span></div>
+        <div class="stat-sub"><span data-lang-ru>Верифицированные глобальные партнёры по продуктам и оборудованию</span><span data-lang-en>Verified global food and equipment partners</span><span data-lang-kz>Тексерілген жаһандық тамақ және жабдық серіктестері</span></div>
+      </div>
+    </div>
+
+    <div class="investor-strip fade-up d3">
+      <div>
+        <div class="investor-strip-label">
+          <span data-lang-ru>Связи с инвесторами</span>
+          <span data-lang-en>Investor Relations</span>
+          <span data-lang-kz>Инвесторлармен қарым-қатынас</span>
+        </div>
+        <div class="investor-strip-desc">
+          <span data-lang-ru>ChefUP закрывает PreSeed-раунд. Deck и data room доступны по запросу.</span>
+          <span data-lang-en>ChefUP is raising its PreSeed round. Deck and data room available on request.</span>
+          <span data-lang-kz>ChefUP PreSeed раундын жабуда. Deck және data room сұраныс бойынша қол жетімді.</span>
+        </div>
+      </div>
+      <a href="mailto:invest@chefup.app" class="btn-primary" style="flex-shrink:0;">
+        <span data-lang-ru>Запросить Deck →</span>
+        <span data-lang-en>Request Deck →</span>
+        <span data-lang-kz>Deck сұрау →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container--wide">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">ChefUP<span>.ai</span></div>
+        <div class="footer-brand-desc">
+          <span data-lang-ru>AI-рабочее пространство для индустрии гостеприимства. HoReCa · Enterprise · Global.</span>
+          <span data-lang-en>AI workspace built for the hospitality industry. HoReCa · Enterprise · Global.</span>
+          <span data-lang-kz>Қонақжайлылық индустриясы үшін жасалған AI жұмыс кеңістігі.</span>
+        </div>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn" title="Telegram">tg</a>
+          <a href="#" class="footer-social-btn" title="LinkedIn">in</a>
+          <a href="#" class="footer-social-btn" title="X">𝕏</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-lang-ru>Продукт</span>
+          <span data-lang-en>Product</span>
+          <span data-lang-kz>Өнім</span>
+        </div>
+        <ul class="footer-links-list">
+          <li><a href="#">
+            <span data-lang-ru>Workspace</span>
+            <span data-lang-en>Workspace</span>
+            <span data-lang-kz>Workspace</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Генерация документов</span>
+            <span data-lang-en>Document Generation</span>
+            <span data-lang-kz>Құжат генерациясы</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Интеграции</span>
+            <span data-lang-en>Integrations</span>
+            <span data-lang-kz>Интеграциялар</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Changelog</span>
+            <span data-lang-en>Changelog</span>
+            <span data-lang-kz>Changelog</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>API</span>
+            <span data-lang-en>API</span>
+            <span data-lang-kz>API</span>
+          </a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-lang-ru>Решения</span>
+          <span data-lang-en>Solutions</span>
+          <span data-lang-kz>Шешімдер</span>
+        </div>
+        <ul class="footer-links-list">
+          <li><a href="#">
+            <span data-lang-ru>Для шеф-поваров</span>
+            <span data-lang-en>For Chefs</span>
+            <span data-lang-kz>Аспаздар үшін</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Для менеджеров</span>
+            <span data-lang-en>For Managers</span>
+            <span data-lang-kz>Менеджерлер үшін</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Для владельцев</span>
+            <span data-lang-en>For Owners</span>
+            <span data-lang-kz>Иелер үшін</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Enterprise</span>
+            <span data-lang-en>Enterprise</span>
+            <span data-lang-kz>Enterprise</span>
+          </a></li>
+          <li><a href="#">ChefUP Super App →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">
+          <span data-lang-ru>Компания</span>
+          <span data-lang-en>Company</span>
+          <span data-lang-kz>Компания</span>
+        </div>
+        <ul class="footer-links-list">
+          <li><a href="#">
+            <span data-lang-ru>О ChefUP</span>
+            <span data-lang-en>About ChefUP</span>
+            <span data-lang-kz>ChefUP туралы</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Блог</span>
+            <span data-lang-en>Blog</span>
+            <span data-lang-kz>Блог</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Вакансии</span>
+            <span data-lang-en>Careers</span>
+            <span data-lang-kz>Вакансиялар</span>
+          </a></li>
+          <li><a href="#">
+            <span data-lang-ru>Контакты</span>
+            <span data-lang-en>Contact</span>
+            <span data-lang-kz>Байланыс</span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 ChefUP Technologies ·
+        <span data-lang-ru>Все права защищены</span>
+        <span data-lang-en>All rights reserved</span>
+        <span data-lang-kz>Барлық құқықтар қорғалған</span>
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">
+          <span data-lang-ru>Конфиденциальность</span>
+          <span data-lang-en>Privacy Policy</span>
+          <span data-lang-kz>Құпиялылық</span>
+        </a>
+        <a href="#">
+          <span data-lang-ru>Условия</span>
+          <span data-lang-en>Terms</span>
+          <span data-lang-kz>Шарттар</span>
+        </a>
+        <a href="#">
+          <span data-lang-ru>Безопасность</span>
+          <span data-lang-en>Security</span>
+          <span data-lang-kz>Қауіпсіздік</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════ JAVASCRIPT ═══════ -->
+<script>
+  // ─── THEME TOGGLE ───
+  const themeBtn = document.getElementById('themeToggle');
+  const htmlEl   = document.documentElement;
+
+  function setTheme(t) {
+    htmlEl.setAttribute('data-theme', t);
+    try { localStorage.setItem('chefup-theme', t); } catch(e) {}
+  }
+  themeBtn.addEventListener('click', () => {
+    setTheme(htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+  try {
+    const saved = localStorage.getItem('chefup-theme');
+    if (saved === 'light' || saved === 'dark') { setTheme(saved); }
+    else { setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  } catch(e) { setTheme('dark'); }
+
+  // ─── LANG SWITCHER ───
+  const langBtns = document.querySelectorAll('.lang-btn[data-lang-target]');
+  function setLang(lang) {
+    htmlEl.setAttribute('data-lang', lang);
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.langTarget === lang));
+    try { localStorage.setItem('chefup-lang', lang); } catch(e) {}
+  }
+  langBtns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.langTarget)));
+  try {
+    const saved = localStorage.getItem('chefup-lang');
+    if (saved && ['ru','en','kz'].includes(saved)) setLang(saved);
+  } catch(e) {}
+
+  // ─── TABS ───
+  const tabBtns   = document.querySelectorAll('.tab-btn[data-tab]');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById('tab-' + btn.dataset.tab);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // ─── FADE-UP OBSERVER ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ─── NAV SCROLL ───
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 60
+      ? 'rgba(249,115,22,0.15)'
+      : 'rgba(255,255,255,0.06)';
+  }, { passive: true });
+
+  // ─── COUNTER ANIMATION ───
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el   = entry.target;
+      const text = el.textContent;
+      const num  = parseFloat(text.replace(/[^0-9.]/g, ''));
+      const suffix = text.replace(/[0-9.,]/g, '');
+      if (isNaN(num)) return;
+      const duration = 1400;
+      const startTime = performance.now();
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const cur = num < 10 ? (eased * num).toFixed(1) : Math.floor(eased * num);
+        el.textContent = cur + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = (num % 1 === 0 ? num : num.toFixed(1)) + suffix;
+      }
+      requestAnimationFrame(update);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.traction-number, .letter-stat-num').forEach(c => counterObs.observe(c));
+
+  // ─── 3D TILT ON CARDS ───
+  document.querySelectorAll('.traction-card, .bevi-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
+</body>
+</html>
